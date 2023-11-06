@@ -1,0 +1,19 @@
+# Add files here to ignore them from prettier formatting
+/dist
+/public
+/coverage
+/tmp
+/node_modules
+/nginx
+/.vscode
+/.idea
+/assets/fonts
+k8s/*
+package-lock.json
+package.json
+yarn.lock
+*.js
+*.sample
+*.yml
+*.md
+*.d.ts
