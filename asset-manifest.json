@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Ilph/aston.react.git/static/css/main.e6c13ad2.css",
+    "main.js": "/Ilph/aston.react.git/static/js/main.e741d793.js",
+    "index.html": "/Ilph/aston.react.git/index.html",
+    "main.e6c13ad2.css.map": "/Ilph/aston.react.git/static/css/main.e6c13ad2.css.map",
+    "main.e741d793.js.map": "/Ilph/aston.react.git/static/js/main.e741d793.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.e741d793.js"
+  ]
+}
