@@ -1,11 +1,15 @@
 import React from 'react'
+import styled from 'styled-components'
 
-import { RouterProvider } from 'react-router-dom'
-
-import { router } from './route/route'
 
 function App() {
-  return <RouterProvider router={router} />
+  return (
+    <Ter>Test style components</Ter>
+  )
 }
+
+const Ter = styled.div`
+  color: red;
+`
 
 export default App
