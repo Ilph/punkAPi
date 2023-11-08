@@ -1,13 +1,17 @@
 {
   "files": {
     "main.css": "/aston.react/static/css/main.e6c13ad2.css",
-    "main.js": "/aston.react/static/js/main.62310df5.js",
+    "main.js": "/aston.react/static/js/main.88e28f0e.js",
+    "static/media/pt-sans-v17-cyrillic_latin-700.woff": "/aston.react/static/media/pt-sans-v17-cyrillic_latin-700.010771f5e70d72b467bb.woff",
+    "static/media/pt-sans-v17-cyrillic_latin-regular.woff": "/aston.react/static/media/pt-sans-v17-cyrillic_latin-regular.88667d5b14f94a82329a.woff",
+    "static/media/pt-sans-v17-cyrillic_latin-700.woff2": "/aston.react/static/media/pt-sans-v17-cyrillic_latin-700.0fad76779f1cdd0ba491.woff2",
+    "static/media/pt-sans-v17-cyrillic_latin-regular.woff2": "/aston.react/static/media/pt-sans-v17-cyrillic_latin-regular.b29d8a5877fb70753625.woff2",
     "index.html": "/aston.react/index.html",
     "main.e6c13ad2.css.map": "/aston.react/static/css/main.e6c13ad2.css.map",
-    "main.62310df5.js.map": "/aston.react/static/js/main.62310df5.js.map"
+    "main.88e28f0e.js.map": "/aston.react/static/js/main.88e28f0e.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.62310df5.js"
+    "static/js/main.88e28f0e.js"
   ]
 }
