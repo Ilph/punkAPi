@@ -1,14 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import { rootReducer } from './RootReducer'
+import { rootReducer } from './root-reducer'
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleware: getDefaultMiddleware => {
+  middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware({
-      thunk: true,
+      thunk: true
     })
-  },
+  }
 })
 
 export type RootState = ReturnType<typeof store.getState>

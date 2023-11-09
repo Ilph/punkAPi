@@ -1,3 +1,6 @@
 export enum Routes {
-  HOME = '/'
+  HOME = '/aston.react',
+  SIGNIN = '/aston.react',
+  SIGNUP = '/signup',
+  NOT_FOUND = '*'
 }
