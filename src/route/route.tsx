@@ -3,9 +3,11 @@ import { createBrowserRouter } from 'react-router-dom'
 
 import { Routes } from '../constants/routes'
 
+import { AuthPage } from '../pages/auth-page'
+
 export const router = createBrowserRouter([
   {
-    path: Routes.HOME,
-    element: <div>New page</div>
+    path: Routes.SIGNIN,
+    element: <AuthPage />
   }
 ])

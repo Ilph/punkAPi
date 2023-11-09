@@ -1,12 +1,16 @@
 import React from 'react'
-import styled from 'styled-components'
+import { RouterProvider } from 'react-router-dom'
 
-function App() {
-  return <Ter>renders learn react link</Ter>
+import { ThemeProvider } from 'styled-components'
+
+import { theme } from './assets/styles/theme'
+
+import { router } from './route/route'
+
+export function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  )
 }
-
-const Ter = styled.div`
-  color: red;
-`
-
-export default App
