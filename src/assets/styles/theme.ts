@@ -30,7 +30,8 @@ export const theme = {
     placeholderFocus: '#000',
     error: '#FF0000',
     everWhite: '#FFF',
-    everBlack: '#000'
+    everBlack: '#000',
+    accent: '#C1ED2F'
   },
   shadows: {
     forFormBackground: '0px 8px 24px rgba(0, 0, 0, 0.08)'

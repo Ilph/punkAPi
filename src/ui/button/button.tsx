@@ -3,15 +3,15 @@ import React, { ButtonHTMLAttributes, ForwardedRef, forwardRef, ReactElement } f
 import styled from 'styled-components'
 
 type Props = {
-  icon?: ReactElement
+  $icon?: ReactElement
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 export const Button = forwardRef((props: Props, ref: ForwardedRef<HTMLButtonElement>) => {
-  const { icon, children } = props
+  const { $icon, children } = props
 
   return (
     <ButtonStyled ref={ref} {...props}>
-      {icon ? icon : children}
+      {$icon ? $icon : children}
     </ButtonStyled>
   )
 })

@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { BaseLayout } from '../components/layout/base-layout'
+import { BaseLayoutWithHeaderFooter } from '../components/layout/base-layout-with-header-footer'
 import { RegModule } from '../modules/reg-module'
 
 export const RegPage = () => {
   return (
-    <BaseLayout>
+    <BaseLayoutWithHeaderFooter>
       <RegModule />
-    </BaseLayout>
+    </BaseLayoutWithHeaderFooter>
   )
 }
