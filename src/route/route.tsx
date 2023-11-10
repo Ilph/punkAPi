@@ -6,6 +6,7 @@ import { Routes } from '../constants/routes'
 import { AuthPage } from '../pages/auth-page'
 import { RegPage } from '../pages/reg-page'
 
+
 export const router = createBrowserRouter([
   {
     path: Routes.SIGNIN,

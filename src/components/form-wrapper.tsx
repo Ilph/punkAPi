@@ -8,6 +8,7 @@ type Props = {
 
 export const FormWrapper = (props: Props) => {
   const { children, padding } = props
+
   return <Wrapper $padding={padding}>{children}</Wrapper>
 }
 
