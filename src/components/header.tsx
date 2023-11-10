@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { Button } from '../ui/button/button'
 import { Link } from '../ui/link/link'
 import { P1 } from '../assets/styles/texts'
-import { $IconBack } from '../assets/icons/icon-back'
+import { IconBack } from '../assets/icons/icon-back'
 
 import { Routes } from '../constants/routes'
 
@@ -36,7 +36,7 @@ export const Header = () => {
           <Container>
             <HeaderLink to={Routes.HISTORY}>History</HeaderLink>
             <HeaderLink to={Routes.FAVORITES}>Favorites</HeaderLink>
-            <Button $icon={$IconBack} onClick={handleClick(Routes.HOME)}>
+            <Button icon={IconBack} onClick={handleClick(Routes.HOME)}>
               Log out
             </Button>
           </Container>
