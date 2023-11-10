@@ -13,20 +13,21 @@ import { P4 } from '../assets/styles/texts'
 
 import { Routes } from '../constants/routes'
 
-import { authSchema } from '../utils/validation/auth-schema'
+import { regSchema } from '../utils/validation/reg-schema'
 
-import type { SignIn } from '../models/signin-model'
+import type { SignUp } from '../models/signup-model'
 
-const defaultAuthFormValues = {
+const defaultRegFormValues = {
   email: '',
-  password: ''
+  password: '',
+  repeatPassword: ''
 }
 
 type Props = {
-  onSubmitForm: (data: SignIn) => void
+  onSubmitForm: (data: SignUp) => void
 }
 
-export const AuthForm = (props: Props) => {
+export const RegForm = (props: Props) => {
   const { onSubmitForm } = props
 
   const {
@@ -35,18 +36,18 @@ export const AuthForm = (props: Props) => {
     handleSubmit,
     setFocus,
     formState: { errors, isSubmitting, isDirty, isValid }
-  } = useForm<SignIn>({
-    defaultValues: defaultAuthFormValues,
+  } = useForm<SignUp>({
+    defaultValues: defaultRegFormValues,
     mode: 'onBlur',
     criteriaMode: 'all',
-    resolver: yupResolver(authSchema)
+    resolver: yupResolver(regSchema)
   })
 
   useEffect(() => {
     setFocus('email')
   }, [setFocus])
 
-  const onSubmit: SubmitHandler<SignIn> = (data) => {
+  const onSubmit: SubmitHandler<SignUp> = (data) => {
     onSubmitForm(data)
     reset()
   }
@@ -56,16 +57,19 @@ export const AuthForm = (props: Props) => {
       <InputContainer>
         <Input placeholder='Email' {...register('email')} errorOn={!!errors.email} />
         {errors.email && <Error>{errors.email.message}</Error>}
-        
+
         <Input placeholder='Password' {...register('password')} errorOn={!!errors.password} />
         {errors.password && <Error $topSize={124}>{errors.password.message}</Error>}
+
+        <Input placeholder='Repeat password' {...register('repeatPassword')} errorOn={!!errors.repeatPassword} />
+        {errors.repeatPassword && <Error $topSize={190}>{errors.repeatPassword.message}</Error>}
       </InputContainer>
 
       <ButtonContainer>
         <Button type='submit' disabled={!isDirty || !isValid || isSubmitting}>
-          Log in
+          Sign up
         </Button>
-        <Link to={Routes.SIGNUP}>Sign up</Link>
+        <Link to={Routes.SIGNIN}>Log in</Link>
       </ButtonContainer>
     </Form>
   )
