@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.js": "/aston.react/static/js/main.136efb6f.js",
+    "main.js": "/aston.react/static/js/main.f73d5a6f.js",
     "static/media/pt-sans-v17-cyrillic_latin-700.woff": "/aston.react/static/media/pt-sans-v17-cyrillic_latin-700.010771f5e70d72b467bb.woff",
     "static/media/pt-sans-v17-cyrillic_latin-regular.woff": "/aston.react/static/media/pt-sans-v17-cyrillic_latin-regular.88667d5b14f94a82329a.woff",
     "static/media/pt-sans-v17-cyrillic_latin-700.woff2": "/aston.react/static/media/pt-sans-v17-cyrillic_latin-700.0fad76779f1cdd0ba491.woff2",
     "static/media/pt-sans-v17-cyrillic_latin-regular.woff2": "/aston.react/static/media/pt-sans-v17-cyrillic_latin-regular.b29d8a5877fb70753625.woff2",
     "index.html": "/aston.react/index.html",
-    "main.136efb6f.js.map": "/aston.react/static/js/main.136efb6f.js.map"
+    "main.f73d5a6f.js.map": "/aston.react/static/js/main.f73d5a6f.js.map"
   },
   "entrypoints": [
-    "static/js/main.136efb6f.js"
+    "static/js/main.f73d5a6f.js"
   ]
 }
