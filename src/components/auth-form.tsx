@@ -56,7 +56,7 @@ export const AuthForm = (props: Props) => {
       <InputContainer>
         <Input placeholder='Email' {...register('email')} errorOn={!!errors.email} />
         {errors.email && <Error>{errors.email.message}</Error>}
-        
+
         <Input placeholder='Password' {...register('password')} errorOn={!!errors.password} />
         {errors.password && <Error $topSize={124}>{errors.password.message}</Error>}
       </InputContainer>

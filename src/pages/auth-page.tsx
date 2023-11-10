@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { BaseLayout } from '../components/layout/base-layout'
+import { BaseLayoutWithHeaderFooter } from '../components/layout/base-layout-with-header-footer'
 import { AuthModule } from '../modules/auth-module'
 
 export const AuthPage = () => {
   return (
-    <BaseLayout>
+    <BaseLayoutWithHeaderFooter>
       <AuthModule />
-    </BaseLayout>
+    </BaseLayoutWithHeaderFooter>
   )
 }

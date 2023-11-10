@@ -3,10 +3,12 @@ import styled, { css } from 'styled-components'
 type Titles = {
   $weight?: string
   $base?: boolean
+  $accent?: boolean
 }
 
 const BaseTitle = css<Titles>`
-  color: ${({ theme, $base }) => ($base ? theme.text.textBaseWhite : theme.text.textInvert)};
+  color: ${({ theme, $base, $accent }) =>
+    $base ? theme.text.textBaseWhite : $accent ? theme.text.accent : theme.text.textInvert};
   line-height: 120%;
 `
 
