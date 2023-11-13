@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 type Props = {
   icon?: ReactElement
+  size?: 'small' | 'middle' | 'big'
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 export const Button = forwardRef((props: Props, ref: ForwardedRef<HTMLButtonElement>) => {
@@ -16,10 +17,10 @@ export const Button = forwardRef((props: Props, ref: ForwardedRef<HTMLButtonElem
   )
 })
 
-const ButtonStyled = styled.button`
-  max-width: 100px;
+const ButtonStyled = styled.button<{ size?: string }>`
+  max-width: ${(props) => (props.size === 'small' ? '40px' : props.size === 'middle' ? '80px' : '100px')};
   width: 100%;
-  height: 40px;
+  height: ${(props) => (props.size === 'small' ? '40px' : props.size === 'middle' ? '34px' : '40px')};
   transition: 0.3s;
   background-color: ${(props) => props.theme.colors.backgroundButton};
   border-radius: ${(props) => props.theme.borders.primary};

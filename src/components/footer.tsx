@@ -15,8 +15,11 @@ export const Footer = () => {
 }
 
 const FooterStyle = styled.footer`
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   display: flex;
-  min-height: 55px;
+  min-height: 60px;
   background: ${({ theme }) => theme.colors.black};
   justify-content: center;
   align-items: center;

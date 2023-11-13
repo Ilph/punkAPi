@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { Link as ReactLink, LinkProps } from 'react-router-dom'
 
-type Props = LinkProps
+export type Props = LinkProps
 
 export const Link = (props: Props) => {
   const { children } = props

@@ -12,6 +12,8 @@ import { Routes } from '../constants/routes'
 
 import IconBeer from '../assets/icons/icon-beer.png'
 
+import type { Props as LinkProps } from '../ui/link/link'
+
 export const Header = () => {
   const navigate = useNavigate()
   // TODO Пока только для верстки. Нужно править.
@@ -36,9 +38,7 @@ export const Header = () => {
           <Container>
             <HeaderLink to={Routes.HISTORY}>History</HeaderLink>
             <HeaderLink to={Routes.FAVORITES}>Favorites</HeaderLink>
-            <Button icon={IconBack} onClick={handleClick(Routes.HOME)}>
-              Log out
-            </Button>
+            <Button icon={IconBack} onClick={handleClick(Routes.HOME)}></Button>
           </Container>
         ) : (
           <Container>
@@ -79,7 +79,7 @@ const Container = styled.div`
   gap: 15px;
 `
 
-const HeaderLink = styled(Link)`
+const HeaderLink = styled(Link)<LinkProps>`
   color: ${(props) => props.theme.text.textBaseWhite};
   font-size: ${(props) => props.theme.vars.fontSize.m};
 `
