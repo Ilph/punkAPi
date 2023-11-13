@@ -38,7 +38,7 @@ export const Header = () => {
           <Container>
             <HeaderLink to={Routes.HISTORY}>History</HeaderLink>
             <HeaderLink to={Routes.FAVORITES}>Favorites</HeaderLink>
-            <Button icon={IconBack} onClick={handleClick(Routes.HOME)}></Button>
+            <Button icon={IconBack} onClick={handleClick(Routes.HOME)} />
           </Container>
         ) : (
           <Container>

@@ -18,6 +18,7 @@ const Wrapper = styled.div<{ $padding?: number | string }>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  align-self: center;
   color: ${({ theme }) => theme.text.textBase};
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.shadows.forFormBackground};

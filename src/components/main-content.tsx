@@ -6,24 +6,22 @@ import { CardForMainPage } from '../ui/card/card-for-main-page'
 
 import { data } from '../data/mockData'
 
-export const MainContent = () => {
-  return (
-    <Container>
-      <List>
-        {data.map((item) => (
-          <CardForMainPage
-            key={item.id}
-            title={item.name}
-            imageUrl={item.image_url}
-            description={item.description}
-            abv={item.abv}
-            ibu={item.ibu ?? ''}
-          />
-        ))}
-      </List>
-    </Container>
-  )
-}
+export const MainContent = () => (
+  <Container>
+    <List>
+      {data.map((item) => (
+        <CardForMainPage
+          key={item.id}
+          title={item.name}
+          imageUrl={item.image_url}
+          description={item.description}
+          abv={item.abv}
+          ibu={item.ibu ?? ''}
+        />
+      ))}
+    </List>
+  </Container>
+)
 
 const Container = styled.div`
   width: 60%;

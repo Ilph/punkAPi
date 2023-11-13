@@ -1,5 +1,3 @@
 import React from 'react'
 
-export const MainPage = () => {
-  return <div>Som context</div>
-}
+export const MainPage = () => <div>Som context</div>
