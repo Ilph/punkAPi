@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import { useWatch, Control } from 'react-hook-form'
 
@@ -32,10 +32,8 @@ export const Suggest = ({ control, names }: { control: Control<Search>; names: P
     defaultValue: ''
   })
 
-  useEffect(() => {
-    const suggestions: Props[] = getSuggestions(searchName, names)
-    setSearchResults(suggestions)
-  }, [searchName, names])
+  const suggestions: Props[] = getSuggestions(searchName, names)
+  setSearchResults(suggestions)
 
   return (
     <SearchWrapper>

@@ -4,11 +4,10 @@ import { rootReducer } from './root-reducer'
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware({
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
       thunk: true
     })
-  }
 })
 
 export type RootState = ReturnType<typeof store.getState>

@@ -6,13 +6,11 @@ import { H2 } from '../assets/styles/texts'
 
 import { FOOTER_TEXT } from '../constants/static-text'
 
-export const Footer = () => {
-  return (
-    <FooterStyle>
-      <Text $base>{FOOTER_TEXT}</Text>
-    </FooterStyle>
-  )
-}
+export const Footer = () => (
+  <FooterStyle>
+    <Text $base>{FOOTER_TEXT}</Text>
+  </FooterStyle>
+)
 
 const FooterStyle = styled.footer`
   position: fixed;
