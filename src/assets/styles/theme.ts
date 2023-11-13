@@ -34,6 +34,9 @@ export const theme = {
     everBlack: '#000',
     accent: '#C1ED2F'
   },
+  shadows: {
+    forFormBackground: '0px 8px 24px rgba(0, 0, 0, 0.08)'
+  },
   borders: {
     primary: '15px',
     round: '50%'

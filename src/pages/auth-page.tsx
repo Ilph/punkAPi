@@ -4,7 +4,7 @@ import { BaseLayoutWithHeaderFooter } from '../components/layout/base-layout-wit
 import { AuthModule } from '../modules/auth-module'
 
 export const AuthPage = () => (
-  <BaseLayoutWithHeaderFooter>
+  <BaseLayoutWithHeaderFooter position={'center'}>
     <AuthModule />
   </BaseLayoutWithHeaderFooter>
 )

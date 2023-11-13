@@ -4,7 +4,7 @@ import { BaseLayoutWithHeaderFooter } from '../components/layout/base-layout-wit
 import { RegModule } from '../modules/reg-module'
 
 export const RegPage = () => (
-  <BaseLayoutWithHeaderFooter>
+  <BaseLayoutWithHeaderFooter position={'center'}>
     <RegModule />
   </BaseLayoutWithHeaderFooter>
 )

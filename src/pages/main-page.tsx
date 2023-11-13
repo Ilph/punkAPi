@@ -9,7 +9,6 @@ export const MainPage = () => (
     <SearchForm
       onSubmitForm={(data) => {
         /* eslint-disable */
-        // TODO Временно вывожу в консоль данные формы
         console.log(data)
       }}
     />
