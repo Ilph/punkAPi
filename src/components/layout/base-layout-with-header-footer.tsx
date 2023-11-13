@@ -27,7 +27,7 @@ const Root = styled.main`
   background: ${({ theme }) => theme.colors.primary};
   flex: 1 0 auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 100%;
 `

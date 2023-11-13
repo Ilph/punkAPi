@@ -4,6 +4,7 @@
   "semi": false,
   "printWidth": 120,
   "trailingComma": "none",
+  "bracketSameLine": false,
   "overrides": [
     {
       "files": ".prettierrc",

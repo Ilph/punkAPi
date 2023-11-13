@@ -21,7 +21,8 @@ export const theme = {
     error: '#FF0000',
     disabled: '#E7A679',
     link: '#170A01',
-    primary: '#F5F2F2'
+    primary: '#F5F2F2',
+    accent: '#C1ED2F'
   },
   text: {
     textInvert: '#000',
@@ -32,9 +33,6 @@ export const theme = {
     everWhite: '#FFF',
     everBlack: '#000',
     accent: '#C1ED2F'
-  },
-  shadows: {
-    forFormBackground: '0px 8px 24px rgba(0, 0, 0, 0.08)'
   },
   borders: {
     primary: '15px',
