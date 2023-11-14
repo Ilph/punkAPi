@@ -1,18 +1,17 @@
 import React from 'react'
 
 import { BaseLayoutWithHeaderFooter } from '../components/layout/base-layout-with-header-footer'
+import { MainContent } from '../components/main-content'
 import { SearchForm } from '../components/search'
-import { AboutCard } from '../components/about-card'
 
-export const CardPage = () => (
+export const SearchPage = () => (
   <BaseLayoutWithHeaderFooter>
     <SearchForm
       onSubmitForm={(data) => {
         /* eslint-disable */
-        // TODO Временно вывожу в консоль данные формы
         console.log(data)
       }}
     />
-    <AboutCard />
+    <MainContent />
   </BaseLayoutWithHeaderFooter>
 )
