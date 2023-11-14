@@ -33,7 +33,7 @@ export const CardForMainPage = (props: Props) => {
     <Container>
       <ImageWrapper>
         <ImageLink to={Routes.CARD}>
-          <img src={imageUrl ?? defaultImage} alt='default card' />
+          <img src={imageUrl ?? defaultImage} alt='beer' />
         </ImageLink>
       </ImageWrapper>
       <Wrapper>
