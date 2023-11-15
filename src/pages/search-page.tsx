@@ -12,6 +12,6 @@ export const SearchPage = () => (
         console.log(data)
       }}
     />
-    <MainContent />
+    SearchPage
   </BaseLayoutWithHeaderFooter>
 )

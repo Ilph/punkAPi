@@ -11,6 +11,8 @@ import { Button } from '../ui/button/button'
 import { Link } from '../ui/link/link'
 import { P4 } from '../assets/styles/texts'
 
+import { useAuth } from '../hooks/context'
+
 import { Routes } from '../constants/routes'
 
 import { authSchema } from '../utils/validation/auth-schema'
@@ -27,6 +29,7 @@ type Props = {
 }
 
 export const AuthForm = (props: Props) => {
+  const auth = useAuth()
   const { onSubmitForm } = props
 
   const {
@@ -34,6 +37,7 @@ export const AuthForm = (props: Props) => {
     reset,
     handleSubmit,
     setFocus,
+    setError,
     formState: { errors, isSubmitting, isDirty, isValid }
   } = useForm<SignIn>({
     defaultValues: defaultAuthFormValues,
@@ -45,6 +49,12 @@ export const AuthForm = (props: Props) => {
   useEffect(() => {
     setFocus('email')
   }, [setFocus])
+
+  useEffect(() => {
+    setError('root.error', {
+      message: auth.signInError ?? ''
+    })
+  }, [setError, auth.signInError])
 
   const onSubmit: SubmitHandler<SignIn> = (data) => {
     onSubmitForm(data)
@@ -66,6 +76,7 @@ export const AuthForm = (props: Props) => {
           Log in
         </Button>
         <Link to={Routes.SIGNUP}>Sign up</Link>
+        {auth.signInError ?? <Error $topSize={180}>{auth.signInError}</Error>}
       </ButtonContainer>
     </Form>
   )

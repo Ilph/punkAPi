@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+import { useParams } from 'react-router-dom'
+
 import styled from 'styled-components'
 
 import { Link } from '../link/link'
@@ -8,6 +10,8 @@ import { H3, P2, P4 } from '../../assets/styles/texts'
 import { IconBookMark } from '../../assets/icons/icon-favorites'
 
 import { Routes } from '../../constants/routes'
+
+import { useAuth } from '../../hooks/context'
 
 import defaultImage from '../../assets/images/default-image-card.jpg'
 
@@ -20,8 +24,9 @@ type Props = {
 }
 
 export const CardForMainPage = (props: Props) => {
+  const { cardId } = useParams()
   const { title, imageUrl, description, abv, ibu } = props
-
+  const auth = useAuth()
   //TODO еще надо подумать про переключение иконки
   const [isToggled, setToggled] = useState(true)
 
@@ -37,7 +42,7 @@ export const CardForMainPage = (props: Props) => {
         </ImageLink>
       </ImageWrapper>
       <Wrapper>
-        <Link to={Routes.CARD}>
+        <Link to={`${Routes.CARD}/${cardId}`}>
           <H3>{title}</H3>
         </Link>
         <P2>{description}</P2>
@@ -46,9 +51,11 @@ export const CardForMainPage = (props: Props) => {
         </P4>
       </Wrapper>
       <BookMark>
-        <Button size={'small'} onClick={handleClick}>
-          <IconBookMark color={isToggled ? 'black' : 'blue'} />
-        </Button>
+        {auth.isAuth ? (
+          <Button size={'small'} onClick={handleClick}>
+            <IconBookMark color={isToggled ? 'black' : 'blue'} />
+          </Button>
+        ) : null}
       </BookMark>
     </Container>
   )
