@@ -10,17 +10,20 @@ import { IconBack } from '../assets/icons/icon-back'
 
 import { Routes } from '../constants/routes'
 
+import { useAuth, useAuthDispatch } from '../hooks/context'
+import { logOut } from '../context/auth-actions'
+
 import IconBeer from '../assets/icons/icon-beer.png'
 
 import type { Props as LinkProps } from '../ui/link/link'
 
 export const Header = () => {
   const navigate = useNavigate()
-  // TODO Пока только для верстки. Нужно править.
-  const isAuth = true
+  const auth = useAuth()
+  const dispatch = useAuthDispatch()
 
   const handleClick = (path: string) => () => {
-    // TODO Разлогиниться
+    dispatch(logOut())
     navigate(path)
   }
 
@@ -34,7 +37,7 @@ export const Header = () => {
           </BrandWrapperr>
         </Link>
 
-        {isAuth ? (
+        {auth.isAuth ? (
           <Container>
             <HeaderLink to={Routes.HISTORY}>History</HeaderLink>
             <HeaderLink to={Routes.FAVORITES}>Favorites</HeaderLink>

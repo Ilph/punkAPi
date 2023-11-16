@@ -5,12 +5,16 @@ import { ThemeProvider } from 'styled-components'
 
 import { theme } from './assets/styles/theme'
 
+import { AuthProvider } from './context/auth-provider'
+
 import { router } from './route/route'
 
 export function App() {
   return (
     <ThemeProvider theme={theme}>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </ThemeProvider>
   )
 }
