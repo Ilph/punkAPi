@@ -1,37 +1,44 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+
+import { useParams } from 'react-router-dom'
 
 import styled from 'styled-components'
 
 import { SingelCard } from '../ui/card/card-for-card-page'
 
-const firstElement = {
-  title: 'Buzz',
-  imageUrl: 'https://images.punkapi.com/v2/keg.png',
-  firstBrewed: '09/2007',
-  description: 'A light, crisp and bitter IPA brewed with English and American hops. A small batch brewed only once.',
-  brewersTips:
-    'The earthy and floral aromas from the hops can be overpowering. Drop a little Cascade in at the end of the boil to lift the profile with a bit of citrus.',
-  abv: 4.5,
-  ibu: 60,
-  srm: 10,
-  ph: 4.4
-}
+import { useAppDispatch, useAppSelector } from '../hooks/store'
+import { beerSelectors } from '../store/beer/beer-selectors'
+import { getBeerById } from '../store/beer/beer-actions'
 
-export const AboutCard = () => (
-  <Container>
-    <SingelCard
-      title={firstElement.title}
-      imageUrl={firstElement.imageUrl}
-      firstBrewed={firstElement.firstBrewed}
-      description={firstElement.description}
-      brewersTips={firstElement.brewersTips}
-      abv={firstElement.abv}
-      ibu={firstElement.ibu}
-      srm={firstElement.srm}
-      ph={firstElement.ph}
-    />
-  </Container>
-)
+export const AboutCard = () => {
+  const { cardId } = useParams()
+  const dispatch = useAppDispatch()
+  const currentBeer = useAppSelector(beerSelectors.getCurrentBeer)
+
+  useEffect(() => {
+    dispatch(getBeerById(Number(cardId)))
+  }, [dispatch, cardId])
+
+  return (
+    <Container>
+      {currentBeer ? (
+        <SingelCard
+          title={currentBeer.name}
+          imageUrl={currentBeer.image_url}
+          firstBrewed={currentBeer.first_brewed}
+          description={currentBeer.description}
+          brewersTips={currentBeer.brewers_tips}
+          abv={currentBeer.abv}
+          ibu={currentBeer.ibu}
+          srm={currentBeer.srm}
+          ph={currentBeer.ph}
+        />
+      ) : (
+        <p>No card of beer</p>
+      )}
+    </Container>
+  )
+}
 
 const Container = styled.div`
   width: 60%;

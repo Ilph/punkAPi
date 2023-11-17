@@ -1,7 +1,5 @@
 import React, { useState } from 'react'
 
-import { useParams } from 'react-router-dom'
-
 import styled from 'styled-components'
 
 import { Link } from '../link/link'
@@ -16,6 +14,7 @@ import { useAuth } from '../../hooks/context'
 import defaultImage from '../../assets/images/default-image-card.jpg'
 
 type Props = {
+  id: number
   title: string
   imageUrl: string
   description: string
@@ -24,8 +23,7 @@ type Props = {
 }
 
 export const CardForMainPage = (props: Props) => {
-  const { cardId } = useParams()
-  const { title, imageUrl, description, abv, ibu } = props
+  const { id, title, imageUrl, description, abv, ibu } = props
   const auth = useAuth()
   //TODO еще надо подумать про переключение иконки
   const [isToggled, setToggled] = useState(true)
@@ -37,12 +35,12 @@ export const CardForMainPage = (props: Props) => {
   return (
     <Container>
       <ImageWrapper>
-        <ImageLink to={Routes.CARD}>
+        <ImageLink to={`${Routes.CARD}/${id}`}>
           <img src={imageUrl ?? defaultImage} alt='beer' />
         </ImageLink>
       </ImageWrapper>
       <Wrapper>
-        <Link to={`${Routes.CARD}/${cardId}`}>
+        <Link to={`${Routes.CARD}/${id}`}>
           <H3>{title}</H3>
         </Link>
         <P2>{description}</P2>
