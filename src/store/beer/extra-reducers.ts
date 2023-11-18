@@ -1,6 +1,6 @@
 import { ActionReducerMapBuilder } from '@reduxjs/toolkit'
 
-import { handleError } from '../../utils/handleError'
+import { handleError } from '../../utils/handle-error'
 
 import { getBeers, getBeerById } from './beer-actions'
 
