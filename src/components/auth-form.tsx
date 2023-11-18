@@ -37,7 +37,6 @@ export const AuthForm = (props: Props) => {
     reset,
     handleSubmit,
     setFocus,
-    setError,
     formState: { errors, isSubmitting, isDirty, isValid }
   } = useForm<SignIn>({
     defaultValues: defaultAuthFormValues,
@@ -49,12 +48,6 @@ export const AuthForm = (props: Props) => {
   useEffect(() => {
     setFocus('email')
   }, [setFocus])
-
-  useEffect(() => {
-    setError('root.error', {
-      message: auth.signInError ?? ''
-    })
-  }, [setError, auth.signInError])
 
   const onSubmit: SubmitHandler<SignIn> = (data) => {
     onSubmitForm(data)
