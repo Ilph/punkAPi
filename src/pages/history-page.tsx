@@ -14,3 +14,5 @@ export const HistoryPage = () => (
     />
   </BaseLayoutWithHeaderFooter>
 )
+
+export default HistoryPage

@@ -41,7 +41,7 @@
 5. [x] Есть применение Контекст API
 6. [x] Есть применение предохранителя
 7. [x] Есть хотя бы один кастомный хук: [Hoooks](https://github.com/Ilph/aston.react/tree/main/src/hooks)
-8. [x] Хотя бы несколько компонентов используют PropTypes
+8. [x] Хотя бы несколько компонентов используют PropTypes: [Layout](https://github.com/Ilph/aston.react/tree/main/src/components/layout/base-layout-with-header-footer.tsx), [RequireAuth](https://github.com/Ilph/aston.react/tree/main/src/components/hoc/require-auth)
 9. [x] Поиск не должен триггерить много запросов к серверу
 10. [x] Есть применение lazy + Suspense
 
