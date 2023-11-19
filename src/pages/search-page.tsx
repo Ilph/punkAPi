@@ -14,3 +14,5 @@ export const SearchPage = () => (
     SearchPage
   </BaseLayoutWithHeaderFooter>
 )
+
+export default SearchPage

@@ -1,5 +1,7 @@
 import React, { PropsWithChildren } from 'react'
 
+import PropTypes from 'prop-types'
+
 import styled from 'styled-components'
 
 import { Header } from '../header'
@@ -18,6 +20,11 @@ export const BaseLayoutWithHeaderFooter = (props: Props) => {
       <Footer />
     </Container>
   )
+}
+
+BaseLayoutWithHeaderFooter.propTypes = {
+  position: PropTypes.string,
+  children: PropTypes.element.isRequired
 }
 
 const Container = styled.div`

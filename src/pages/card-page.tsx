@@ -4,7 +4,7 @@ import { BaseLayoutWithHeaderFooter } from '../components/layout/base-layout-wit
 import { SearchForm } from '../components/search'
 import { AboutCard } from '../components/about-card'
 
-export const CardPage = () => (
+const CardPage = () => (
   <BaseLayoutWithHeaderFooter>
     <SearchForm
       onSubmitForm={(data) => {
@@ -16,3 +16,5 @@ export const CardPage = () => (
     <AboutCard />
   </BaseLayoutWithHeaderFooter>
 )
+
+export default CardPage

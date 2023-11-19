@@ -1,23 +1,32 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 
 import { Routes } from '../constants/routes'
 
 import { Root } from '../components/root'
-import { MainPage } from '../pages/main-page'
-import { AuthPage } from '../pages/auth-page'
-import { RegPage } from '../pages/reg-page'
-import { CardPage } from '../pages/card-page'
-import { FavoritesPage } from '../pages/favorites-page'
-import { HistoryPage } from '../pages/history-page'
-import { SearchPage } from '../pages/search-page'
 
 import { RequireAuth } from '../hoc/require-auth'
+import { Spiner } from '../ui/loader/spiner'
+import { ErrorBoundary } from '../components/error-boundary'
+
+const MainPage = lazy(() => import('../pages/main-page'))
+const AuthPage = lazy(() => import('../pages/auth-page'))
+const RegPage = lazy(() => import('../pages/reg-page'))
+const CardPage = lazy(() => import('../pages/card-page'))
+const FavoritesPage = lazy(() => import('../pages/favorites-page'))
+const HistoryPage = lazy(() => import('../pages/history-page'))
+const SearchPage = lazy(() => import('../pages/search-page'))
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <Root />,
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<Spiner />}>
+          <Root />
+        </Suspense>
+      </ErrorBoundary>
+    ),
     children: [
       {
         path: Routes.HOME,

@@ -4,7 +4,7 @@ import { BaseLayoutWithHeaderFooter } from '../components/layout/base-layout-wit
 import { MainContent } from '../components/main-content'
 import { SearchForm } from '../components/search'
 
-export const MainPage = () => (
+const MainPage = () => (
   <BaseLayoutWithHeaderFooter>
     <SearchForm
       onSubmitForm={(data) => {
@@ -15,3 +15,5 @@ export const MainPage = () => (
     <MainContent />
   </BaseLayoutWithHeaderFooter>
 )
+
+export default MainPage
