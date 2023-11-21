@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 
-import { useAuthDispatch } from '../hooks/context'
-import { getUserAction } from '../context/auth-actions'
+import { useAppDispatch } from '../hooks/store'
+import { getCurrentUser } from '../store/auth/auth-slices'
 
 export const Root = () => {
-  const dispatch = useAuthDispatch()
-  dispatch(getUserAction())
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(getCurrentUser())
+  })
 
   return <Outlet />
 }

@@ -1,41 +1,40 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import styled from 'styled-components'
 
 import { CardForMainPage } from '../ui/card/card-for-main-page'
+import { Loader } from '../ui/loader/loader'
 
-import { useAppDispatch, useAppSelector } from '../hooks/store'
-import { beerSelectors } from '../store/beer/beer-selectors'
-import { getBeers } from '../store/beer/beer-actions'
+import { useGetBeersQuery } from '../store/rtk-query.ts/beers-api'
 
 export const MainContent = () => {
-  const dispatch = useAppDispatch()
-  const beers = useAppSelector(beerSelectors.getBeers)
-  const beersStatus = useAppSelector(beerSelectors.getBeersStatus)
+  const { data: beers = [], isLoading, isSuccess, isError, error } = useGetBeersQuery({ page: 1 })
 
-  useEffect(() => {
-    if (beersStatus === 'initial') {
-      dispatch(getBeers())
-    }
-  }, [dispatch, beersStatus])
+  let content
 
-  return (
-    <Container>
+  if (isLoading) {
+    content = <Loader />
+  } else if (isSuccess) {
+    content = (
       <List>
         {beers.map((item) => (
           <CardForMainPage
             key={item.id}
             id={item.id}
             title={item.name}
-            imageUrl={item.image_url}
+            imageUrl={item.imageUrl}
             description={item.description}
             abv={item.abv}
             ibu={item.ibu ?? ''}
           />
         ))}
       </List>
-    </Container>
-  )
+    )
+  } else if (isError) {
+    throw new Error(error.toString())
+  }
+
+  return <Container>{content}</Container>
 }
 
 const Container = styled.div`

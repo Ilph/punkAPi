@@ -3,9 +3,9 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 export const Loader = () => (
-  <div>
+  <Container>
     <LoaderStyle />
-  </div>
+  </Container>
 )
 
 const fill = keyframes`
@@ -16,6 +16,10 @@ const fill = keyframes`
 const fillNeck = keyframes`
   0% , 50%{ box-shadow: 0 0  inset }
   100% { box-shadow: 0 -20px inset }
+`
+
+const Container = styled.div`
+  text-align: center;
 `
 
 const LoaderStyle = styled.span`

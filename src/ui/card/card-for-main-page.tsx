@@ -9,7 +9,8 @@ import { IconBookMark } from '../../assets/icons/icon-favorites'
 
 import { Routes } from '../../constants/routes'
 
-import { useAuth } from '../../hooks/context'
+import { useAppSelector } from '../../hooks/store'
+import { authSelectors } from '../../store/auth/auth-selectors'
 
 import defaultImage from '../../assets/images/default-image-card.jpg'
 
@@ -24,7 +25,7 @@ type Props = {
 
 export const CardForMainPage = (props: Props) => {
   const { id, title, imageUrl, description, abv, ibu } = props
-  const auth = useAuth()
+  const isAuth = useAppSelector(authSelectors.getIsAuth)
   //TODO еще надо подумать про переключение иконки
   const [isToggled, setToggled] = useState(true)
 
@@ -49,7 +50,7 @@ export const CardForMainPage = (props: Props) => {
         </P4>
       </Wrapper>
       <BookMark>
-        {auth.isAuth ? (
+        {isAuth ? (
           <Button size={'small'} onClick={handleClick}>
             <IconBookMark color={isToggled ? 'black' : 'blue'} />
           </Button>

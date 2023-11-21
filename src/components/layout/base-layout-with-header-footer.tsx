@@ -23,8 +23,7 @@ export const BaseLayoutWithHeaderFooter = (props: Props) => {
 }
 
 BaseLayoutWithHeaderFooter.propTypes = {
-  position: PropTypes.string,
-  children: PropTypes.element.isRequired
+  position: PropTypes.string
 }
 
 const Container = styled.div`

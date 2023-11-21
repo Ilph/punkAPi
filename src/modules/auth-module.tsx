@@ -6,20 +6,25 @@ import { FormWrapper } from '../components/form-wrapper'
 import { H3 } from '../assets/styles/texts'
 import { AuthForm } from '../components/auth-form'
 
-import { useAuthDispatch } from '../hooks/context'
-import { signInAction } from '../context/auth-actions'
-
 import { Routes } from '../constants/routes'
+
+import { useAppSelector, useAppDispatch } from '../hooks/store'
+import { authSelectors } from '../store/auth/auth-selectors'
+
+import { signIn } from '../store/auth/auth-slices'
 
 import type { SignIn } from '../models/signin-model'
 
 export const AuthModule = () => {
   const navigate = useNavigate()
-  const dispatch = useAuthDispatch()
+  const dispatch = useAppDispatch()
+  const signInError = useAppSelector(authSelectors.getSignInError)
 
   const handleSubmit = (data: SignIn) => {
-    dispatch(signInAction(data))
-    navigate(Routes.HOME)
+    dispatch(signIn(data))
+    if (!signInError) {
+      navigate(Routes.HOME)
+    }
   }
 
   return (

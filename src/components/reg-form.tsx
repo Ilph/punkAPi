@@ -13,6 +13,9 @@ import { P4 } from '../assets/styles/texts'
 
 import { Routes } from '../constants/routes'
 
+import { useAppSelector } from '../hooks/store'
+import { authSelectors } from '../store/auth/auth-selectors'
+
 import { regSchema } from '../utils/validation/reg-schema'
 
 import type { SignUp } from '../models/signup-model'
@@ -28,6 +31,9 @@ type Props = {
 }
 
 export const RegForm = (props: Props) => {
+  const signUpError = useAppSelector(authSelectors.getSignUpError)
+  /*eslint-disable*/
+  console.log(signUpError)
   const { onSubmitForm } = props
 
   const {
@@ -70,6 +76,7 @@ export const RegForm = (props: Props) => {
           Sign up
         </Button>
         <Link to={Routes.SIGNIN}>Log in</Link>
+        {signUpError && <Error $topSize={110}>{signUpError}</Error>}
       </ButtonContainer>
     </Form>
   )

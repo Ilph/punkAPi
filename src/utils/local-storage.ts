@@ -7,8 +7,6 @@ class LocalStorage {
   public set = (key: string, value: Record<string, unknown>): void => {
     localStorage.setItem(key, JSON.stringify(value))
   }
-
-  public delete = (key: string) => localStorage.removeItem(key)
 }
 
 export const localST = new LocalStorage()
