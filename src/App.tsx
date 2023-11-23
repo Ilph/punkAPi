@@ -5,12 +5,16 @@ import { ThemeProvider } from 'styled-components'
 
 import { theme } from './assets/styles/theme'
 
+import { SearchProvider } from './context/search-provider'
+
 import { router } from './route/route'
 
 export function App() {
   return (
     <ThemeProvider theme={theme}>
-      <RouterProvider router={router} />
+      <SearchProvider>
+        <RouterProvider router={router} />
+      </SearchProvider>
     </ThemeProvider>
   )
 }

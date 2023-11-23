@@ -1,5 +1,4 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect } from 'react'
 
 import { SubmitHandler, useForm } from 'react-hook-form'
 
@@ -8,14 +7,17 @@ import styled from 'styled-components'
 import { Input } from '../ui/input/input'
 import { Button } from '../ui/button/button'
 
-import { Routes } from '../constants/routes'
+import { useSearchDispatch } from '../hooks/context'
 
 import { Suggest } from './suggest'
 
 import type { Search } from '../models/search-model'
+import type { modifyedBeer } from '../utils/modify-beers-response'
 
 type Props = {
   onSubmitForm: (data: Search) => void
+  beers: modifyedBeer[]
+  isLoading: boolean
 }
 
 const defaultSearchFormValues = {
@@ -23,31 +25,36 @@ const defaultSearchFormValues = {
 }
 
 export const SearchForm = (props: Props) => {
-  const navigate = useNavigate()
-  const { onSubmitForm } = props
+  const dispatch = useSearchDispatch()
+  const { onSubmitForm, beers, isLoading } = props
 
   const {
     register,
     reset,
     handleSubmit,
-    formState: { errors, isSubmitting, isDirty },
-    control
+    watch,
+    formState: { errors, isSubmitting, isDirty }
   } = useForm<Search>({
     defaultValues: defaultSearchFormValues,
     mode: 'onBlur',
     criteriaMode: 'all'
   })
 
+  const searchValue = watch('search', defaultSearchFormValues.search)
+
+  useEffect(() => {
+    dispatch({ type: 'addSearchValue', searchValue: searchValue })
+  }, [dispatch, searchValue])
+
   const onSubmit: SubmitHandler<Search> = (data) => {
-    navigate(Routes.SEARCH)
     onSubmitForm(data)
     reset()
   }
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Input type='search' {...register('search')} errorOn={!!errors.search} />
-      <Suggest control={control} names={[]} />
+      <Input placeholder='Search beers ...' type='search' {...register('search')} errorOn={!!errors.search} />
+      <Suggest beers={beers} searchValue={searchValue} isLoading={isLoading} />
 
       <Button type='submit' size={'middle'} disabled={!isDirty || isSubmitting}>
         Search
