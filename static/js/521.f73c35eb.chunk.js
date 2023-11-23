@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkaston_react=self.webpackChunkaston_react||[]).push([[521],{3521:(e,a,s)=>{s.r(a),s.d(a,{SearchPage:()=>n,default:()=>o});s(2791);var c=s(6365),r=s(221),t=s(184);const n=()=>(0,t.jsxs)(c.N,{children:[(0,t.jsx)(r.U,{onSubmitForm:e=>{console.log(e)}}),"SearchPage"]}),o=n}}]);
-//# sourceMappingURL=521.f73c35eb.chunk.js.map
