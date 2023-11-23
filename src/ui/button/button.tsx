@@ -27,12 +27,15 @@ const ButtonStyled = styled.button<{ size?: string }>`
   border: none;
   color: ${(props) => props.theme.text.everBlack};
 
+  &: active {
+    opacity: 1;
+  }
+
   &:disabled {
     opacity: 0.6;
   }
 
-  &:not([disabled]):hover,
-  &:not([disabled]):focus {
+  &:not([disabled]):hover {
     opacity: 0.6;
     transition: 0.3s;
     cursor: pointer;

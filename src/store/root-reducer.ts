@@ -1,9 +1,12 @@
 import { combineReducers } from '@reduxjs/toolkit'
 
-import { beerReducer } from './beer/beer-slice'
+import { authReducer } from './auth/auth-slices'
+
+import { beersSlice } from './rtk-query.ts/beers-api'
 
 export const rootReducer = combineReducers({
-  beers: beerReducer
+  auth: authReducer,
+  [beersSlice.reducerPath]: beersSlice.reducer
 })
 
 export type RootState = ReturnType<typeof rootReducer>

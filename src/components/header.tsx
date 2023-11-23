@@ -10,8 +10,9 @@ import { IconBack } from '../assets/icons/icon-back'
 
 import { Routes } from '../constants/routes'
 
-import { useAuth, useAuthDispatch } from '../hooks/context'
-import { logOut } from '../context/auth-actions'
+import { useAppDispatch, useAppSelector } from '../hooks/store'
+import { authSelectors } from '../store/auth/auth-selectors'
+import { logOut } from '../store/auth/auth-slices'
 
 import IconBeer from '../assets/icons/icon-beer.png'
 
@@ -19,8 +20,8 @@ import type { Props as LinkProps } from '../ui/link/link'
 
 export const Header = () => {
   const navigate = useNavigate()
-  const auth = useAuth()
-  const dispatch = useAuthDispatch()
+  const isAuth = useAppSelector(authSelectors.getIsAuth)
+  const dispatch = useAppDispatch()
 
   const handleClick = (path: string) => () => {
     dispatch(logOut())
@@ -37,7 +38,7 @@ export const Header = () => {
           </BrandWrapperr>
         </Link>
 
-        {auth.isAuth ? (
+        {isAuth ? (
           <Container>
             <HeaderLink to={Routes.HISTORY}>History</HeaderLink>
             <HeaderLink to={Routes.FAVORITES}>Favorites</HeaderLink>

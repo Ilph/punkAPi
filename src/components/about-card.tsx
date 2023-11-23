@@ -1,43 +1,41 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { useParams } from 'react-router-dom'
 
 import styled from 'styled-components'
 
-import { SingelCard } from '../ui/card/card-for-card-page'
+import { useGetBeerByIdQuery } from '../store/rtk-query.ts/beers-api'
 
-import { useAppDispatch, useAppSelector } from '../hooks/store'
-import { beerSelectors } from '../store/beer/beer-selectors'
-import { getBeerById } from '../store/beer/beer-actions'
+import { SingelCard } from '../ui/card/card-for-card-page'
+import { Loader } from '../ui/loader/loader'
 
 export const AboutCard = () => {
   const { cardId } = useParams()
-  const dispatch = useAppDispatch()
-  const currentBeer = useAppSelector(beerSelectors.getCurrentBeer)
+  const { data: currentBeer, isFetching, isSuccess, isError, error } = useGetBeerByIdQuery(Number(cardId))
 
-  useEffect(() => {
-    dispatch(getBeerById(Number(cardId)))
-  }, [dispatch, cardId])
+  let content
 
-  return (
-    <Container>
-      {currentBeer ? (
-        <SingelCard
-          title={currentBeer.name}
-          imageUrl={currentBeer.image_url}
-          firstBrewed={currentBeer.first_brewed}
-          description={currentBeer.description}
-          brewersTips={currentBeer.brewers_tips}
-          abv={currentBeer.abv}
-          ibu={currentBeer.ibu}
-          srm={currentBeer.srm}
-          ph={currentBeer.ph}
-        />
-      ) : (
-        <p>No card of beer</p>
-      )}
-    </Container>
-  )
+  if (isFetching) {
+    content = <Loader />
+  } else if (isSuccess) {
+    content = (
+      <SingelCard
+        title={currentBeer.name}
+        imageUrl={currentBeer.imageUrl}
+        firstBrewed={currentBeer.firstBrewed}
+        description={currentBeer.description}
+        brewersTips={currentBeer.brewersTips}
+        abv={currentBeer.abv}
+        ibu={currentBeer.ibu}
+        srm={currentBeer.srm}
+        ph={currentBeer.ph}
+      />
+    )
+  } else if (isError) {
+    throw new Error(error.toString())
+  }
+
+  return <Container>{content}</Container>
 }
 
 const Container = styled.div`

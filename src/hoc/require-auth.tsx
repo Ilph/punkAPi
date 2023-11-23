@@ -4,15 +4,17 @@ import PropTypes from 'prop-types'
 
 import { Navigate, useLocation } from 'react-router-dom'
 
-import { useAuth } from '../hooks/context'
+import { useAppSelector } from '../hooks/store'
+import { authSelectors } from '../store/auth/auth-selectors'
 
 import { Routes } from '../constants/routes'
 
 export const RequireAuth = ({ children }: { children: JSX.Element }) => {
-  const auth = useAuth()
+  const isAuth = useAppSelector(authSelectors.getIsAuth)
+
   const location = useLocation()
 
-  if (!auth.isAuth) {
+  if (!isAuth) {
     return <Navigate to={Routes.HOME} state={{ from: location }} replace />
   }
 

@@ -11,7 +11,8 @@ import { Button } from '../ui/button/button'
 import { Link } from '../ui/link/link'
 import { P4 } from '../assets/styles/texts'
 
-import { useAuth } from '../hooks/context'
+import { useAppSelector } from '../hooks/store'
+import { authSelectors } from '../store/auth/auth-selectors'
 
 import { Routes } from '../constants/routes'
 
@@ -29,7 +30,7 @@ type Props = {
 }
 
 export const AuthForm = (props: Props) => {
-  const auth = useAuth()
+  const signInError = useAppSelector(authSelectors.getSignInError)
   const { onSubmitForm } = props
 
   const {
@@ -69,7 +70,7 @@ export const AuthForm = (props: Props) => {
           Log in
         </Button>
         <Link to={Routes.SIGNUP}>Sign up</Link>
-        {auth.signInError ?? <Error $topSize={180}>{auth.signInError}</Error>}
+        {signInError && <Error $topSize={120}>{signInError}</Error>}
       </ButtonContainer>
     </Form>
   )

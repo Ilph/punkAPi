@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 
 import styled from 'styled-components'
 
-import { useAuth } from '../../hooks/context'
+import { useAppSelector } from '../../hooks/store'
+import { authSelectors } from '../../store/auth/auth-selectors'
 
 import { Button } from '../button/button'
 import { H3, P2, P3 } from '../../assets/styles/texts'
@@ -24,7 +25,7 @@ type Props = {
 
 export const SingelCard = (props: Props) => {
   const { title, imageUrl, firstBrewed, description, brewersTips, abv, ibu, srm, ph } = props
-  const auth = useAuth()
+  const isAuth = useAppSelector(authSelectors.getIsAuth)
 
   const [isToggled, setToggled] = useState(true)
 
@@ -56,7 +57,7 @@ export const SingelCard = (props: Props) => {
       </InfoWrapper>
 
       <BookMark>
-        {auth.isAuth ? (
+        {isAuth ? (
           <Button size={'small'} onClick={handleClick}>
             <IconBookMark color={isToggled ? 'black' : 'blue'} />
           </Button>
