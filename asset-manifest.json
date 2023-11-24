@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/aston.react/static/js/main.f47aa185.js",
-    "static/js/321.29016d80.chunk.js": "/aston.react/static/js/321.29016d80.chunk.js",
+    "main.js": "/aston.react/static/js/main.f7710159.js",
+    "static/js/321.d40c622d.chunk.js": "/aston.react/static/js/321.d40c622d.chunk.js",
     "static/js/30.b98e7726.chunk.js": "/aston.react/static/js/30.b98e7726.chunk.js",
-    "static/js/29.5b0717b9.chunk.js": "/aston.react/static/js/29.5b0717b9.chunk.js",
-    "static/js/716.e0afff39.chunk.js": "/aston.react/static/js/716.e0afff39.chunk.js",
-    "static/js/212.e4c3d8bc.chunk.js": "/aston.react/static/js/212.e4c3d8bc.chunk.js",
-    "static/js/432.e0197cf3.chunk.js": "/aston.react/static/js/432.e0197cf3.chunk.js",
-    "static/js/193.e455106d.chunk.js": "/aston.react/static/js/193.e455106d.chunk.js",
+    "static/js/29.c7b2120b.chunk.js": "/aston.react/static/js/29.c7b2120b.chunk.js",
+    "static/js/716.94d088b4.chunk.js": "/aston.react/static/js/716.94d088b4.chunk.js",
+    "static/js/212.ac37bd46.chunk.js": "/aston.react/static/js/212.ac37bd46.chunk.js",
+    "static/js/744.82df5d99.chunk.js": "/aston.react/static/js/744.82df5d99.chunk.js",
+    "static/js/193.cad7fc0e.chunk.js": "/aston.react/static/js/193.cad7fc0e.chunk.js",
     "static/js/134.0ecadd3e.chunk.js": "/aston.react/static/js/134.0ecadd3e.chunk.js",
     "static/js/143.50fe5d73.chunk.js": "/aston.react/static/js/143.50fe5d73.chunk.js",
     "static/js/570.877f3434.chunk.js": "/aston.react/static/js/570.877f3434.chunk.js",
@@ -16,19 +16,19 @@
     "static/media/pt-sans-v17-cyrillic_latin-700.woff2": "/aston.react/static/media/pt-sans-v17-cyrillic_latin-700.0fad76779f1cdd0ba491.woff2",
     "static/media/pt-sans-v17-cyrillic_latin-regular.woff2": "/aston.react/static/media/pt-sans-v17-cyrillic_latin-regular.b29d8a5877fb70753625.woff2",
     "index.html": "/aston.react/index.html",
-    "main.f47aa185.js.map": "/aston.react/static/js/main.f47aa185.js.map",
-    "321.29016d80.chunk.js.map": "/aston.react/static/js/321.29016d80.chunk.js.map",
+    "main.f7710159.js.map": "/aston.react/static/js/main.f7710159.js.map",
+    "321.d40c622d.chunk.js.map": "/aston.react/static/js/321.d40c622d.chunk.js.map",
     "30.b98e7726.chunk.js.map": "/aston.react/static/js/30.b98e7726.chunk.js.map",
-    "29.5b0717b9.chunk.js.map": "/aston.react/static/js/29.5b0717b9.chunk.js.map",
-    "716.e0afff39.chunk.js.map": "/aston.react/static/js/716.e0afff39.chunk.js.map",
-    "212.e4c3d8bc.chunk.js.map": "/aston.react/static/js/212.e4c3d8bc.chunk.js.map",
-    "432.e0197cf3.chunk.js.map": "/aston.react/static/js/432.e0197cf3.chunk.js.map",
-    "193.e455106d.chunk.js.map": "/aston.react/static/js/193.e455106d.chunk.js.map",
+    "29.c7b2120b.chunk.js.map": "/aston.react/static/js/29.c7b2120b.chunk.js.map",
+    "716.94d088b4.chunk.js.map": "/aston.react/static/js/716.94d088b4.chunk.js.map",
+    "212.ac37bd46.chunk.js.map": "/aston.react/static/js/212.ac37bd46.chunk.js.map",
+    "744.82df5d99.chunk.js.map": "/aston.react/static/js/744.82df5d99.chunk.js.map",
+    "193.cad7fc0e.chunk.js.map": "/aston.react/static/js/193.cad7fc0e.chunk.js.map",
     "134.0ecadd3e.chunk.js.map": "/aston.react/static/js/134.0ecadd3e.chunk.js.map",
     "143.50fe5d73.chunk.js.map": "/aston.react/static/js/143.50fe5d73.chunk.js.map",
     "570.877f3434.chunk.js.map": "/aston.react/static/js/570.877f3434.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.f47aa185.js"
+    "static/js/main.f7710159.js"
   ]
 }
