@@ -2,29 +2,19 @@ import React from 'react'
 
 import styled from 'styled-components'
 
-import { useSearch } from '../hooks/context'
-import { useDebounce } from '../hooks/use-debounce'
-
-import { useDoSearchQuery } from '../store/rtk-query.ts/search-api'
+import { useAppSelector } from '../hooks/store'
+import { favoritesSelectors } from '../store/favorites/favorites-selectors'
 
 import { CardForMainPage } from '../ui/card/card-for-main-page'
 
-export const SearchContent = () => {
-  const searchValue = useSearch()
-
-  const debouncedSearchValue = useDebounce(searchValue.searchValue, 2000)
-
-  const { data: beers = [] } = useDoSearchQuery(
-    { beerName: debouncedSearchValue },
-    {
-      skip: !Boolean(debouncedSearchValue)
-    }
-  )
+export const FavoritesContent = () => {
+  const favoritesBeers = useAppSelector(favoritesSelectors.getFavorites)
+  const isFavorites = useAppSelector(favoritesSelectors.getIsFavourites)
 
   return (
     <Container>
       <List>
-        {beers.map((item) => (
+        {favoritesBeers.map((item) => (
           <CardForMainPage
             key={item.id}
             id={item.id}
@@ -33,6 +23,7 @@ export const SearchContent = () => {
             description={item.description}
             abv={item.abv}
             ibu={item.ibu ?? ''}
+            isFavorite={isFavorites}
           />
         ))}
       </List>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import styled from 'styled-components'
 
@@ -7,30 +7,46 @@ import { Button } from '../button/button'
 import { H3, P2, P4 } from '../../assets/styles/texts'
 import { IconBookMark } from '../../assets/icons/icon-favorites'
 
+import { useToggle } from '../../hooks/useToggle'
+
 import { Routes } from '../../constants/routes'
 
-import { useAppSelector } from '../../hooks/store'
+import { useAppSelector, useAppDispatch } from '../../hooks/store'
 import { authSelectors } from '../../store/auth/auth-selectors'
+import { addFavorites, deleteFavorites } from '../../store/favorites/favorites-slices'
 
 import defaultImage from '../../assets/images/default-image-card.jpg'
 
 type Props = {
   id: number
-  title: string
+  name: string
   imageUrl: string
   description: string
   abv: number
-  ibu: number | string
+  ibu: number
+  isFavorite?: boolean
 }
 
 export const CardForMainPage = (props: Props) => {
-  const { id, title, imageUrl, description, abv, ibu } = props
+  const dispatch = useAppDispatch()
+  const { id, name, imageUrl, description, abv, ibu, isFavorite } = props
   const isAuth = useAppSelector(authSelectors.getIsAuth)
+
   //TODO еще надо подумать про переключение иконки
-  const [isToggled, setToggled] = useState(true)
+  const [isToggled, setToggled] = useToggle(true)
 
   const handleClick = () => {
-    setToggled(!isToggled)
+    if (isFavorite) {
+      dispatch(deleteFavorites(id))
+      return
+    }
+
+    if (isToggled) {
+      dispatch(addFavorites(props))
+    } else {
+      dispatch(deleteFavorites(id))
+    }
+    setToggled()
   }
 
   return (
@@ -42,7 +58,7 @@ export const CardForMainPage = (props: Props) => {
       </ImageWrapper>
       <Wrapper>
         <Link to={`${Routes.CARD}/${id}`}>
-          <H3>{title}</H3>
+          <H3>{name}</H3>
         </Link>
         <P2>{description}</P2>
         <P4>
@@ -52,7 +68,7 @@ export const CardForMainPage = (props: Props) => {
       <BookMark>
         {isAuth ? (
           <Button size={'small'} onClick={handleClick}>
-            <IconBookMark color={isToggled ? 'black' : 'blue'} />
+            <IconBookMark color={isFavorite ? 'blue' : isToggled ? 'black' : 'blue'} />
           </Button>
         ) : null}
       </BookMark>

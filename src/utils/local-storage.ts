@@ -1,12 +1,18 @@
 class LocalStorage {
-  public get = (key: string): Record<string, unknown> | null => {
-    const data = localStorage.getItem(key)
+  readonly key: string
+
+  constructor(key: string) {
+    this.key = key
+  }
+
+  public get = (): Record<string, unknown>[] | null => {
+    const data = localStorage.getItem(this.key)
     return data ? JSON.parse(data) : null
   }
 
-  public set = (key: string, value: Record<string, unknown>): void => {
+  public set = (key: string, value: Record<string, unknown>[]): void => {
     localStorage.setItem(key, JSON.stringify(value))
   }
 }
 
-export const localST = new LocalStorage()
+export const localST = new LocalStorage('users')

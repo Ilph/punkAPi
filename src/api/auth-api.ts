@@ -2,41 +2,74 @@ import { localST } from '../utils/local-storage'
 
 import type { SignUp } from '../models/signup-model'
 import type { SignIn } from '../models/signin-model'
-import type { User } from '../models/user-model'
+import type { LocalStorageKey } from '../models/local-storage-model'
 
 class AuthApi {
-  public getUser(key: string) {
-    return localST.get(key) as User
+  static key = 'users'
+
+  public getUsers() {
+    return localST.get() as LocalStorageKey
   }
 
   public signIn(body: SignIn) {
-    let keys = Object.keys(localStorage)
-    for (let key of keys) {
-      const value = this.getUser(key)
-      if (value.email === body.email && value.password === body.password) {
-        return localST.set(key, { ...value, isAuth: true })
-      }
+    const users = this.getUsers()
+
+    if (!users) {
+      return
     }
+
+    users.forEach((item) => {
+      if (item.data.email === body.email && item.data.password === body.password) {
+        item.data.isAuth = true
+      }
+    })
+    localST.set(AuthApi.key, users)
   }
 
   public signup(body: SignUp) {
+    const users = this.getUsers()
     const { email } = body
-    return localST.set(email, { ...body, isAuth: true })
+    if (users) {
+      users.push({
+        id: email,
+        data: { ...body, isAuth: true, favorites: [], history: [] }
+      })
+      localST.set(AuthApi.key, users)
+    } else {
+      const newUser = [
+        {
+          id: email,
+          data: { ...body, isAuth: true, favorites: [], history: [] }
+        }
+      ]
+      localST.set(AuthApi.key, newUser)
+    }
   }
 
   public logOut() {
+    const users = this.getUsers()
     const user = this.getCurrentUser()
-    if (user && user.email) {
-      return localST.set(user.email as string, { ...user, isAuth: false })
+    users.forEach((item) => {
+      if (item.id === user?.id) {
+        item.data.isAuth = false
+      }
+    })
+    if (user) {
+      localST.set(AuthApi.key, users)
     }
   }
 
   public getCurrentUser() {
-    let keys = Object.keys(localStorage)
-    for (let key of keys) {
-      const value = this.getUser(key)
-      if (value !== null && value !== undefined && value.isAuth) {
-        return this.getUser(key)
+    const users = this.getUsers()
+
+    if (!users) {
+      return
+    }
+
+    for (let user of users) {
+      const isAuth = user.data.isAuth
+      if (isAuth) {
+        return user
       } else {
         continue
       }

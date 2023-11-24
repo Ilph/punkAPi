@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { BaseLayoutWithHeaderFooter } from '../components/layout/base-layout-with-header-footer'
-import { MainContent } from '../components/main-content'
+import { FavoritesContent } from '../components/favorites-content'
 
 const FavoritesPage = () => (
   <BaseLayoutWithHeaderFooter>
-    <MainContent />
+    <FavoritesContent />
   </BaseLayoutWithHeaderFooter>
 )
 
