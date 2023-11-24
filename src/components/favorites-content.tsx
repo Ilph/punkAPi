@@ -2,6 +2,8 @@ import React from 'react'
 
 import styled from 'styled-components'
 
+import { P3 } from '../assets/styles/texts'
+
 import { useAppSelector } from '../hooks/store'
 import { favoritesSelectors } from '../store/favorites/favorites-selectors'
 
@@ -14,18 +16,22 @@ export const FavoritesContent = () => {
   return (
     <Container>
       <List>
-        {favoritesBeers.map((item) => (
-          <CardForMainPage
-            key={item.id}
-            id={item.id}
-            name={item.name}
-            imageUrl={item.imageUrl}
-            description={item.description}
-            abv={item.abv}
-            ibu={item.ibu ?? ''}
-            isFavorite={isFavorites}
-          />
-        ))}
+        {favoritesBeers.length !== 0 ? (
+          favoritesBeers.map((item) => (
+            <CardForMainPage
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              imageUrl={item.imageUrl}
+              description={item.description}
+              abv={item.abv}
+              ibu={item.ibu ?? ''}
+              isFavorite={isFavorites}
+            />
+          ))
+        ) : (
+          <P3>Список избранных пуст</P3>
+        )}
       </List>
     </Container>
   )

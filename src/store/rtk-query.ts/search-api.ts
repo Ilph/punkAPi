@@ -25,4 +25,4 @@ export const searchSlice = createApi({
   })
 })
 
-export const { useDoSearchQuery } = searchSlice
+export const { useDoSearchQuery, useLazyDoSearchQuery } = searchSlice
