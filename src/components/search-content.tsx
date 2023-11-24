@@ -2,39 +2,43 @@ import React from 'react'
 
 import styled from 'styled-components'
 
-import { useSearch } from '../hooks/context'
-import { useDebounce } from '../hooks/use-debounce'
+import { useSearchParams } from 'react-router-dom'
+
+import { P3 } from '../assets/styles/texts'
 
 import { useDoSearchQuery } from '../store/rtk-query.ts/search-api'
 
 import { CardForMainPage } from '../ui/card/card-for-main-page'
 
 export const SearchContent = () => {
-  const searchValue = useSearch()
-
-  const debouncedSearchValue = useDebounce(searchValue.searchValue, 2000)
+  const [searchQuery] = useSearchParams()
+  const query = searchQuery.get('beer_name')
 
   const { data: beers = [] } = useDoSearchQuery(
-    { beerName: debouncedSearchValue },
+    { beerName: query! },
     {
-      skip: !Boolean(debouncedSearchValue)
+      skip: !Boolean(query)
     }
   )
 
   return (
     <Container>
       <List>
-        {beers.map((item) => (
-          <CardForMainPage
-            key={item.id}
-            id={item.id}
-            name={item.name}
-            imageUrl={item.imageUrl}
-            description={item.description}
-            abv={item.abv}
-            ibu={item.ibu ?? ''}
-          />
-        ))}
+        {beers.length !== 0 ? (
+          beers.map((item) => (
+            <CardForMainPage
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              imageUrl={item.imageUrl}
+              description={item.description}
+              abv={item.abv}
+              ibu={item.ibu ?? ''}
+            />
+          ))
+        ) : (
+          <P3>Ничего не найдено</P3>
+        )}
       </List>
     </Container>
   )

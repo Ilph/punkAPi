@@ -4,7 +4,7 @@ export type User = {
   repeatPassword: string
   isAuth: boolean
   favorites: favoritesCard[]
-  history?: string[]
+  history: string[]
 }
 
 export type favoritesCard = {

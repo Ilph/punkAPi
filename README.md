@@ -38,21 +38,21 @@
 2. [x] Есть разделение на умные и глупые компоненты: [Smart](https://github.com/Ilph/aston.react/tree/main/src/modules), [Dump](https://github.com/Ilph/aston.react/tree/main/src/ui)
 3. [x] Есть рендеринг списков: [MainContent](https://github.com/Ilph/aston.react/blob/main/src/components/main-content.tsx), [Suggests](https://github.com/Ilph/aston.react/blob/main/src/components/suggest.tsx)
 4. [x] Реализована хотя бы одна форма: [AuthForm](https://github.com/Ilph/aston.react/blob/main/src/components/auth-form.tsx), [RegForm](https://github.com/Ilph/aston.react/blob/main/src/components/reg-form.tsx)
-5. [x] Есть применение Контекст API
-6. [x] Есть применение предохранителя
+5. [x] Есть применение Контекст API: [Context](https://github.com/Ilph/aston.react/tree/main/src/context)
+6. [x] Есть применение предохранителя: [ErrorBoundary](https://github.com/Ilph/aston.react/tree/main/src/route/route.tsx)
 7. [x] Есть хотя бы один кастомный хук: [Hoooks](https://github.com/Ilph/aston.react/tree/main/src/hooks)
 8. [x] Хотя бы несколько компонентов используют PropTypes: [Layout](https://github.com/Ilph/aston.react/tree/main/src/components/layout/base-layout-with-header-footer.tsx), [RequireAuth](https://github.com/Ilph/aston.react/tree/main/src/components/hoc/require-auth)
 9. [x] Поиск не должен триггерить много запросов к серверу
-10. [x] Есть применение lazy + Suspense
+10. [x] Есть применение lazy + Suspense: [lazy + Suspense](https://github.com/Ilph/aston.react/tree/main/src/route/route.tsx)
 
 
 ## Redux
 
 1. [x] Используем Modern Redux with Redux Toolkit
-2. [x] Используем слайсы
+2. [x] Используем слайсы: [Slices](https://github.com/Ilph/aston.react/tree/main/src/store/auth/auth-slices.ts)
 3. [x] Есть хотя бы одна кастомная мидлвара или createListenerMiddleware
-4. [x] Используется RTK Query
-5. [x] Используется Transforming Responses
+4. [x] Используется RTK Query: [RTK Query](https://github.com/Ilph/aston.react/tree/main/src/store/rtk-query)
+5. [x] Используется Transforming Responses[: RTK Query](https://github.com/Ilph/aston.react/tree/main/src/store/rtk-query/beers-api.ts)
 
 
 ## **2 уровень (необязательный)**

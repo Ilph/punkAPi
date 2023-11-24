@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { BaseLayoutWithHeaderFooter } from '../components/layout/base-layout-with-header-footer'
-import { SearchModule } from '../modules/search-module'
+import { HistoryContent } from '../components/history-content'
 
-//TODO пока как заглушка
-export const HistoryPage = () => (
-  <BaseLayoutWithHeaderFooter>
-    <SearchModule />
-  </BaseLayoutWithHeaderFooter>
-)
+import { useAppDispatch } from '../hooks/store'
+import { getHistorysOfCurrentUser } from '../store/historys/historys-slices'
+
+export const HistoryPage = () => {
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(getHistorysOfCurrentUser())
+  })
+
+  return (
+    <BaseLayoutWithHeaderFooter>
+      <HistoryContent />
+    </BaseLayoutWithHeaderFooter>
+  )
+}
 
 export default HistoryPage

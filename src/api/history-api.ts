@@ -1,20 +1,13 @@
 import { localST } from '../utils/local-storage'
 
-import type { favoritesCard } from '../models/user-model'
 import type { LocalStorageKey } from '../models/local-storage-model'
 
-class FavoritesApi {
+class HistoryApi {
   static key = 'users'
 
-  public addFavoriteCardtoLocalStorage(favoriteCard: favoritesCard) {
+  public addStorytoLocalStorage(historyQuery: string) {
     const users = this.getUsers()
     const currentUser = this.getCurrentUser()
-
-    const item = currentUser?.data.favorites.find((item) => item.id === favoriteCard.id)
-
-    if (item) {
-      return
-    }
 
     if (!users) {
       return
@@ -22,13 +15,13 @@ class FavoritesApi {
 
     users.forEach((item) => {
       if (item.id === currentUser?.id) {
-        item.data.favorites.push(favoriteCard)
+        item.data.history.push(historyQuery)
       }
     })
-    localST.set(FavoritesApi.key, users)
+    localST.set(HistoryApi.key, users)
   }
 
-  public deleteFavoriteCardFromLocalStorage(id: number) {
+  public deleteFavoriteCardFromLocalStorage(historyQuery: string) {
     const users = this.getUsers()
     const currentUser = this.getCurrentUser()
 
@@ -36,13 +29,13 @@ class FavoritesApi {
       return
     }
 
-    const favorites = currentUser?.data.favorites?.filter((item) => item.id !== id)
+    const historys = currentUser?.data.history?.filter((item) => item !== historyQuery)
     users.forEach((item) => {
-      if (favorites && item.id === currentUser?.id) {
-        item.data.favorites = favorites
+      if (historys && item.id === currentUser?.id) {
+        item.data.history = historys
       }
     })
-    localST.set(FavoritesApi.key, users)
+    localST.set(HistoryApi.key, users)
   }
 
   private getUsers() {
@@ -67,4 +60,4 @@ class FavoritesApi {
   }
 }
 
-export const favoritesApi = new FavoritesApi()
+export const historyApi = new HistoryApi()

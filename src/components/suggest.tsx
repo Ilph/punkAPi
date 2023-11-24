@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { Link } from '../ui/link/link'
-import { H3 } from '../assets/styles/texts'
+import { P1 } from '../assets/styles/texts'
 
 import { Routes } from '../constants/routes'
 
@@ -23,7 +23,7 @@ export const Suggest = ({ beers, searchValue, isLoading }: Props) => (
         {beers.map((item) => (
           <Link to={`${Routes.CARD}/${item.id}`} key={item.id}>
             <SearchItem>
-              <H3>{item.name}</H3>
+              <P1>{item.name}</P1>
             </SearchItem>
           </Link>
         ))}

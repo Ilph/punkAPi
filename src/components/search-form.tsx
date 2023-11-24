@@ -25,7 +25,7 @@ const defaultSearchFormValues = {
 }
 
 export const SearchForm = (props: Props) => {
-  const dispatch = useSearchDispatch()
+  const dispatchContext = useSearchDispatch()
   const { onSubmitForm, beers, isLoading } = props
 
   const {
@@ -43,8 +43,8 @@ export const SearchForm = (props: Props) => {
   const searchValue = watch('search', defaultSearchFormValues.search)
 
   useEffect(() => {
-    dispatch({ type: 'addSearchValue', searchValue: searchValue })
-  }, [dispatch, searchValue])
+    dispatchContext({ type: 'addSearchValue', searchValue: searchValue })
+  }, [dispatchContext, searchValue])
 
   const onSubmit: SubmitHandler<Search> = (data) => {
     onSubmitForm(data)

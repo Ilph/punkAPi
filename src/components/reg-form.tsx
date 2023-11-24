@@ -32,8 +32,6 @@ type Props = {
 
 export const RegForm = (props: Props) => {
   const signUpError = useAppSelector(authSelectors.getSignUpError)
-  /*eslint-disable*/
-  console.log(signUpError)
   const { onSubmitForm } = props
 
   const {
