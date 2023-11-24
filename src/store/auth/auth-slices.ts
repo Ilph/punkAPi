@@ -48,7 +48,7 @@ export const authSlice = createSlice({
       authApi.signIn(action.payload)
       const currentUser = authApi.getCurrentUser()
       if (currentUser) {
-        state.user = currentUser
+        state.user = currentUser.data
         state.isAuth = true
         state.signInStatus = 'success'
         state.signInError = null
@@ -63,7 +63,7 @@ export const authSlice = createSlice({
       authApi.signup(action.payload)
       const currentUser = authApi.getCurrentUser()
       if (currentUser) {
-        state.user = currentUser
+        state.user = currentUser.data
         state.signInStatus = 'success'
         state.signUpStatus = 'success'
         state.isAuth = true
@@ -89,7 +89,7 @@ export const authSlice = createSlice({
       const currentUser = authApi.getCurrentUser()
       if (currentUser) {
         state.userStatus = 'success'
-        state.user = currentUser
+        state.user = currentUser.data
         state.isAuth = true
         state.userError = null
       } else {

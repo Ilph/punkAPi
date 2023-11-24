@@ -21,7 +21,7 @@ export const MainContent = () => {
           <CardForMainPage
             key={item.id}
             id={item.id}
-            title={item.name}
+            name={item.name}
             imageUrl={item.imageUrl}
             description={item.description}
             abv={item.abv}
