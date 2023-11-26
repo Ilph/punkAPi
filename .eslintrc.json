@@ -1,11 +1,22 @@
 {
-  "extends": ["react-app", "react-app/jest", "prettier"],
+  "extends": ["react-app", "react-app/jest", "prettier", "plugin:storybook/recommended"],
   "rules": {
     "no-console": "warn",
     "import/prefer-default-export": "off",
-    "react/jsx-no-useless-fragment": ["error", { "allowExpressions": true }],
+    "react/jsx-no-useless-fragment": [
+      "error",
+      {
+        "allowExpressions": true
+      }
+    ],
     "no-unused-expressions": "error",
-    "react/self-closing-comp": ["error", { "component": true, "html": true }],
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": true
+      }
+    ],
     "arrow-body-style": ["error", "as-needed"],
     "import/order": [
       "error",
