@@ -1,18 +1,23 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import styled from 'styled-components'
 
-import { useAppSelector } from '../../hooks/store'
+import { useAppDispatch, useAppSelector } from '../../hooks/store'
 import { authSelectors } from '../../store/auth/auth-selectors'
+
+import { addFavorites, deleteFavorites } from '../../store/favorites/favorites-slices'
 
 import { Button } from '../button/button'
 import { H3, P2, P3 } from '../../assets/styles/texts'
 import { IconBookMark } from '../../assets/icons/icon-favorites'
 
+import { useToggle } from '../../hooks/useToggle'
+
 import defaultImage from '../../assets/images/default-image-card.jpg'
 
 type Props = {
-  title: string
+  id: number
+  name: string
   imageUrl: string
   firstBrewed: string
   description: string
@@ -21,16 +26,23 @@ type Props = {
   ibu: number
   srm: number
   ph: number
+  isFavorite: boolean
 }
 
 export const SingelCard = (props: Props) => {
-  const { title, imageUrl, firstBrewed, description, brewersTips, abv, ibu, srm, ph } = props
+  const { id, name, imageUrl, firstBrewed, description, brewersTips, abv, ibu, srm, ph, isFavorite } = props
+  const dispatch = useAppDispatch()
   const isAuth = useAppSelector(authSelectors.getIsAuth)
 
-  const [isToggled, setToggled] = useState(true)
+  const [isToggled, setToggled] = useToggle(isFavorite)
 
   const handleClick = () => {
-    setToggled(!isToggled)
+    if (!isToggled) {
+      dispatch(addFavorites(props))
+    } else {
+      dispatch(deleteFavorites(id))
+    }
+    setToggled()
   }
 
   return (
@@ -40,7 +52,7 @@ export const SingelCard = (props: Props) => {
       </ImageWrapper>
 
       <InfoWrapper>
-        <H3>{title}</H3>
+        <H3>{name}</H3>
         <PropertyWrapper>
           <P3>ABV - {abv}%</P3>
           <P3>IBU - {ibu}</P3>
@@ -59,7 +71,7 @@ export const SingelCard = (props: Props) => {
       <BookMark>
         {isAuth ? (
           <Button size={'small'} onClick={handleClick}>
-            <IconBookMark color={isToggled ? 'black' : 'blue'} />
+            <IconBookMark color={!isToggled ? 'dark' : 'blue'} />
           </Button>
         ) : null}
       </BookMark>
