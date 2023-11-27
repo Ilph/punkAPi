@@ -3,7 +3,5 @@ export function debounce(originalFn: Function, timeOutMs: number) {
   return (...args: unknown[]) => {
     clearTimeout(timeOut)
     timeOut = setTimeout(() => originalFn(...args), timeOutMs)
-    /*eslint-disable*/
-    console.log(timeOut)
   }
 }
