@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/aston.react/static/js/main.82f12bc8.js",
-    "static/js/321.f9d32d33.chunk.js": "/aston.react/static/js/321.f9d32d33.chunk.js",
+    "main.js": "/aston.react/static/js/main.99c4396b.js",
+    "static/js/563.88d026e5.chunk.js": "/aston.react/static/js/563.88d026e5.chunk.js",
     "static/js/30.f7c80834.chunk.js": "/aston.react/static/js/30.f7c80834.chunk.js",
     "static/js/29.b51c0f12.chunk.js": "/aston.react/static/js/29.b51c0f12.chunk.js",
     "static/js/716.20b7e0ed.chunk.js": "/aston.react/static/js/716.20b7e0ed.chunk.js",
@@ -16,8 +16,8 @@
     "static/media/pt-sans-v17-cyrillic_latin-700.woff2": "/aston.react/static/media/pt-sans-v17-cyrillic_latin-700.0fad76779f1cdd0ba491.woff2",
     "static/media/pt-sans-v17-cyrillic_latin-regular.woff2": "/aston.react/static/media/pt-sans-v17-cyrillic_latin-regular.b29d8a5877fb70753625.woff2",
     "index.html": "/aston.react/index.html",
-    "main.82f12bc8.js.map": "/aston.react/static/js/main.82f12bc8.js.map",
-    "321.f9d32d33.chunk.js.map": "/aston.react/static/js/321.f9d32d33.chunk.js.map",
+    "main.99c4396b.js.map": "/aston.react/static/js/main.99c4396b.js.map",
+    "563.88d026e5.chunk.js.map": "/aston.react/static/js/563.88d026e5.chunk.js.map",
     "30.f7c80834.chunk.js.map": "/aston.react/static/js/30.f7c80834.chunk.js.map",
     "29.b51c0f12.chunk.js.map": "/aston.react/static/js/29.b51c0f12.chunk.js.map",
     "716.20b7e0ed.chunk.js.map": "/aston.react/static/js/716.20b7e0ed.chunk.js.map",
@@ -29,6 +29,6 @@
     "242.1c960c1a.chunk.js.map": "/aston.react/static/js/242.1c960c1a.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.82f12bc8.js"
+    "static/js/main.99c4396b.js"
   ]
 }
