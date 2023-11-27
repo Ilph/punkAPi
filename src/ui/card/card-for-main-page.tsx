@@ -13,6 +13,7 @@ import { Routes } from '../../constants/routes'
 
 import { useAppSelector, useAppDispatch } from '../../hooks/store'
 import { authSelectors } from '../../store/auth/auth-selectors'
+
 import { addFavorites, deleteFavorites } from '../../store/favorites/favorites-slices'
 
 import defaultImage from '../../assets/images/default-image-card.jpg'
@@ -24,7 +25,7 @@ type Props = {
   description: string
   abv: number
   ibu: number
-  isFavorite?: boolean
+  isFavorite: boolean
 }
 
 export const CardForMainPage = (props: Props) => {
@@ -32,16 +33,10 @@ export const CardForMainPage = (props: Props) => {
   const { id, name, imageUrl, description, abv, ibu, isFavorite } = props
   const isAuth = useAppSelector(authSelectors.getIsAuth)
 
-  //TODO еще надо подумать про переключение иконки
-  const [isToggled, setToggled] = useToggle(true)
+  const [isToggled, setToggled] = useToggle(isFavorite)
 
   const handleClick = () => {
-    if (isFavorite) {
-      dispatch(deleteFavorites(id))
-      return
-    }
-
-    if (isToggled) {
+    if (!isToggled) {
       dispatch(addFavorites(props))
     } else {
       dispatch(deleteFavorites(id))
@@ -68,7 +63,7 @@ export const CardForMainPage = (props: Props) => {
       <BookMark>
         {isAuth ? (
           <Button size={'small'} onClick={handleClick}>
-            <IconBookMark color={isFavorite ? 'blue' : isToggled ? 'black' : 'blue'} />
+            <IconBookMark color={!isToggled ? 'dark' : 'blue'} />
           </Button>
         ) : null}
       </BookMark>

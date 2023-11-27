@@ -11,7 +11,7 @@ import { CardForMainPage } from '../ui/card/card-for-main-page'
 
 export const FavoritesContent = () => {
   const favoritesBeers = useAppSelector(favoritesSelectors.getFavorites)
-  const isFavorites = useAppSelector(favoritesSelectors.getIsFavourites)
+  const isFavorite = useAppSelector(favoritesSelectors.getIsFavourites)
 
   return (
     <Container>
@@ -26,7 +26,7 @@ export const FavoritesContent = () => {
               description={item.description}
               abv={item.abv}
               ibu={item.ibu ?? ''}
-              isFavorite={isFavorites}
+              isFavorite={isFavorite}
             />
           ))
         ) : (

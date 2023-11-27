@@ -2,10 +2,10 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { favoritesApi } from '../../api/favorites-api'
 
-import type { favoritesCard } from '../../models/user-model'
+import type { Card, FavoritesCard } from '../../models/card-model'
 
 export type FavoritesSlice = {
-  favorites: favoritesCard[]
+  favorites: FavoritesCard[]
   isFavorites: boolean
 }
 
@@ -18,13 +18,12 @@ export const favoritesSlices = createSlice({
   name: 'favourites',
   initialState,
   reducers: {
-    addFavorites: (state, action: PayloadAction<favoritesCard>) => {
-      favoritesApi.addFavoriteCardtoLocalStorage(action.payload)
+    addFavorites: (state, action: PayloadAction<Card>) => {
       const result = state.favorites.find((item) => item.id === action.payload.id)
       if (result) {
         return
       }
-      state.favorites.push(action.payload)
+      state.favorites.push({ ...action.payload, isFavorite: true })
     },
     deleteFavorites: (state, action: PayloadAction<number>) => {
       favoritesApi.deleteFavoriteCardFromLocalStorage(action.payload)

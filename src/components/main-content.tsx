@@ -6,9 +6,19 @@ import { CardForMainPage } from '../ui/card/card-for-main-page'
 import { Loader } from '../ui/loader/loader'
 
 import { useGetBeersQuery } from '../store/rtk-query.ts/beers-api'
+import { useAppSelector } from '../hooks/store'
+import { favoritesSelectors } from '../store/favorites/favorites-selectors'
 
 export const MainContent = () => {
   const { data: beers = [], isLoading, isSuccess, isError, error } = useGetBeersQuery({ page: 1 })
+  const favorites = useAppSelector(favoritesSelectors.getFavorites)
+  const newData = beers.map((item) => {
+    const element = favorites.find((element) => element.id === item.id)
+    if (element) {
+      return { ...item, isFavorite: element.isFavorite }
+    }
+    return { ...item, isFavorite: false }
+  })
 
   let content
 
@@ -17,7 +27,7 @@ export const MainContent = () => {
   } else if (isSuccess) {
     content = (
       <List>
-        {beers.map((item) => (
+        {newData.map((item) => (
           <CardForMainPage
             key={item.id}
             id={item.id}
@@ -26,6 +36,7 @@ export const MainContent = () => {
             description={item.description}
             abv={item.abv}
             ibu={item.ibu ?? ''}
+            isFavorite={item.isFavorite}
           />
         ))}
       </List>

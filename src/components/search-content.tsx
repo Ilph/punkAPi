@@ -34,6 +34,7 @@ export const SearchContent = () => {
               description={item.description}
               abv={item.abv}
               ibu={item.ibu ?? ''}
+              isFavorite={false}
             />
           ))
         ) : (

@@ -1,12 +1,12 @@
 import { localST } from '../utils/local-storage'
 
-import type { favoritesCard } from '../models/user-model'
+import type { FavoritesCard } from '../models/card-model'
 import type { LocalStorageKey } from '../models/local-storage-model'
 
 class FavoritesApi {
   static key = 'users'
 
-  public addFavoriteCardtoLocalStorage(favoriteCard: favoritesCard) {
+  public addFavoriteCardtoLocalStorage(favoriteCard: FavoritesCard) {
     const users = this.getUsers()
     const currentUser = this.getCurrentUser()
 
