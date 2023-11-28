@@ -2,13 +2,13 @@ import React, { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 
 import { useAppDispatch } from '../hooks/store'
-import { getCurrentUser } from '../store/auth/auth-slices'
+import { getUser } from '../store/auth/auth-actions'
 
 export const Root = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(getCurrentUser())
+    dispatch(getUser())
   })
 
   return <Outlet />

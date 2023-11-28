@@ -1,13 +1,13 @@
 import { localST } from '../utils/local-storage'
 
-import type { LocalStorageKey } from '../models/local-storage-model'
+import { BaseApi } from './base-api'
 
-class HistoryApi {
+class HistoryApi extends BaseApi {
   static key = 'users'
 
-  public addStorytoLocalStorage(historyQuery: string) {
-    const users = this.getUsers()
-    const currentUser = this.getCurrentUser()
+  public addStory(historyQuery: string) {
+    const users = super.getUsers()
+    const currentUser = super.getCurrentUser()
 
     if (!users) {
       return
@@ -21,9 +21,9 @@ class HistoryApi {
     localST.set(HistoryApi.key, users)
   }
 
-  public deleteFavoriteCardFromLocalStorage(historyQuery: string) {
-    const users = this.getUsers()
-    const currentUser = this.getCurrentUser()
+  public deleteStory(historyQuery: string) {
+    const users = super.getUsers()
+    const currentUser = super.getCurrentUser()
 
     if (!users) {
       return
@@ -36,27 +36,6 @@ class HistoryApi {
       }
     })
     localST.set(HistoryApi.key, users)
-  }
-
-  private getUsers() {
-    return localST.get() as LocalStorageKey
-  }
-
-  public getCurrentUser() {
-    const users = this.getUsers()
-
-    if (!users) {
-      return
-    }
-
-    for (let user of users) {
-      const isAuth = user.data.isAuth
-      if (isAuth) {
-        return user
-      } else {
-        continue
-      }
-    }
   }
 }
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import styled from 'styled-components'
 
@@ -7,7 +7,7 @@ import { Button } from '../button/button'
 import { H3, P2, P4 } from '../../assets/styles/texts'
 import { IconBookMark } from '../../assets/icons/icon-favorites'
 
-import { useToggle } from '../../hooks/useToggle'
+import { useToggle } from '../../hooks/use-toggle'
 
 import { Routes } from '../../constants/routes'
 
@@ -28,7 +28,7 @@ type Props = {
   isFavorite: boolean
 }
 
-export const CardForMainPage = (props: Props) => {
+export const CardForMainPage = memo((props: Props) => {
   const dispatch = useAppDispatch()
   const { id, name, imageUrl, description, abv, ibu, isFavorite } = props
   const isAuth = useAppSelector(authSelectors.getIsAuth)
@@ -69,7 +69,7 @@ export const CardForMainPage = (props: Props) => {
       </BookMark>
     </Container>
   )
-}
+})
 
 const Container = styled.li`
   display: flex;

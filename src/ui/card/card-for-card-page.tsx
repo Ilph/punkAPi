@@ -11,7 +11,7 @@ import { Button } from '../button/button'
 import { H3, P2, P3 } from '../../assets/styles/texts'
 import { IconBookMark } from '../../assets/icons/icon-favorites'
 
-import { useToggle } from '../../hooks/useToggle'
+import { useToggle } from '../../hooks/use-toggle'
 
 import defaultImage from '../../assets/images/default-image-card.jpg'
 

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { useSearchParams } from 'react-router-dom'
+
 import { useNavigate } from 'react-router-dom'
 
 import { FormWrapper } from '../components/form-wrapper'
@@ -11,19 +13,22 @@ import { Routes } from '../constants/routes'
 import { useAppSelector, useAppDispatch } from '../hooks/store'
 import { authSelectors } from '../store/auth/auth-selectors'
 
-import { signIn } from '../store/auth/auth-slices'
+import { logIn } from '../store/auth/auth-actions'
 
 import type { SignIn } from '../models/signin-model'
 
 export const AuthModule = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_, setSearchQuery] = useSearchParams()
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const signInError = useAppSelector(authSelectors.getSignInError)
 
   const handleSubmit = (data: SignIn) => {
-    dispatch(signIn(data))
+    dispatch(logIn(data))
     if (!signInError) {
       navigate(Routes.HOME)
+      setSearchQuery({ page: '1' })
     }
   }
 

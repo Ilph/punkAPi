@@ -4,13 +4,13 @@ import { BaseLayoutWithHeaderFooter } from '../components/layout/base-layout-wit
 import { HistoryContent } from '../components/history-content'
 
 import { useAppDispatch } from '../hooks/store'
-import { getHistorysOfCurrentUser } from '../store/historys/historys-slices'
+import { getHistorys } from '../store/historys/history-actions'
 
 export const HistoryPage = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(getHistorysOfCurrentUser())
+    dispatch(getHistorys())
   })
 
   return (

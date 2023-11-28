@@ -7,7 +7,7 @@ import { P3 } from '../assets/styles/texts'
 import { useAppSelector } from '../hooks/store'
 import { favoritesSelectors } from '../store/favorites/favorites-selectors'
 
-import { CardForMainPage } from '../ui/card/card-for-main-page'
+import { CardForMainPage } from '../ui/card/main-card'
 
 export const FavoritesContent = () => {
   const favoritesBeers = useAppSelector(favoritesSelectors.getFavorites)

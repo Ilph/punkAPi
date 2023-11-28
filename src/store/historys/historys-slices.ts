@@ -1,7 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { historyApi } from '../../api/history-api'
-
 export type FavoritesSlice = {
   historys: string[]
 }
@@ -15,20 +13,13 @@ export const historysSlices = createSlice({
   initialState,
   reducers: {
     addHistoryQuery: (state, action: PayloadAction<string>) => {
-      historyApi.addStorytoLocalStorage(action.payload)
       state.historys.push(action.payload)
     },
     deleteHistoryQuery: (state, action: PayloadAction<string>) => {
-      historyApi.deleteFavoriteCardFromLocalStorage(action.payload)
       state.historys = state.historys.filter((item) => item !== action.payload)
     },
-    getHistorysOfCurrentUser: (state) => {
-      const currentUser = historyApi.getCurrentUser()
-      if (currentUser) {
-        state.historys = currentUser.data.history
-      } else {
-        state.historys = []
-      }
+    getHistorysOfCurrentUser: (state, action: PayloadAction<string[] | []>) => {
+      state.historys = action.payload
     }
   }
 })

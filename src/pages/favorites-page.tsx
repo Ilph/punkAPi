@@ -4,13 +4,13 @@ import { BaseLayoutWithHeaderFooter } from '../components/layout/base-layout-wit
 import { FavoritesContent } from '../components/favorites-content'
 
 import { useAppDispatch } from '../hooks/store'
-import { getFavouritesOfCurrentUser } from '../store/favorites/favorites-slices'
+import { getFavorites } from '../store/favorites/favorite-actions'
 
 const FavoritesPage = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(getFavouritesOfCurrentUser())
+    dispatch(getFavorites())
   })
 
   return (

@@ -16,7 +16,7 @@ export const beersSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: BASE_API_CONFIG.url }),
   endpoints: (builder) => ({
     getBeers: builder.query<modifyedBeer[], QueryParams>({
-      query: ({ page }) => ({
+      query: ({ page = 1 }) => ({
         url: '/beers',
         params: { page }
       }),

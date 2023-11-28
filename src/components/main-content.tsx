@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { useSearchParams } from 'react-router-dom'
 
-import { CardForMainPage } from '../ui/card/card-for-main-page'
+import { CardForMainPage } from '../ui/card/main-card'
 import { Loader } from '../ui/loader/loader'
 
 import { useScroll } from '../hooks/use-scroll'
