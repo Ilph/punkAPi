@@ -1,8 +1,13 @@
-import { localST } from '../utils/local-storage'
+import { localST } from '../../utils/local-storage'
 
 import { BaseApi } from './base-api'
 
-class HistoryApi extends BaseApi {
+export interface IHistoryApi {
+  addStory: (historyQuery: string) => void
+  deleteStory: (historyQuery: string) => void
+}
+
+class HistoryApi extends BaseApi implements IHistoryApi {
   static key = 'users'
 
   public addStory(historyQuery: string) {

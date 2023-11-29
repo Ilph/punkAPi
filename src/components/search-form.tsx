@@ -12,7 +12,7 @@ import { useSearchDispatch } from '../hooks/context'
 import { Suggest } from './suggest'
 
 import type { Search } from '../models/search-model'
-import type { modifyedBeer } from '../utils/modify-beers-response'
+import type { modifyedBeer } from '../models/beer-model'
 
 type Props = {
   onSubmitForm: (data: Search) => void

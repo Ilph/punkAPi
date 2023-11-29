@@ -1,11 +1,19 @@
-import { localST } from '../utils/local-storage'
+import { localST } from '../../utils/local-storage'
 
 import { BaseApi } from './base-api'
 
-import type { SignUp } from '../models/signup-model'
-import type { SignIn } from '../models/signin-model'
+import type { SignUp } from '../../models/signup-model'
+import type { SignIn } from '../../models/signin-model'
+import type { LocalStorageUser } from '../../models/local-storage-model'
 
-class AuthApi extends BaseApi {
+export interface IAuthApi {
+  signIn: (body: SignIn) => void
+  signUp: (body: SignUp) => void
+  logOut: () => void
+  getCurrentUser: () => LocalStorageUser | null
+}
+
+class AuthApi extends BaseApi implements IAuthApi {
   static key = 'users'
 
   public signIn(body: SignIn) {
@@ -23,7 +31,7 @@ class AuthApi extends BaseApi {
     localST.set(AuthApi.key, users)
   }
 
-  public signup(body: SignUp) {
+  public signUp(body: SignUp) {
     const users = super.getUsers()
     const { email } = body
     if (users) {
@@ -46,6 +54,9 @@ class AuthApi extends BaseApi {
   public logOut() {
     const users = super.getUsers()
     const user = super.getCurrentUser()
+    if (!users) {
+      return
+    }
     users.forEach((item) => {
       if (item.id === user?.id) {
         item.data.isAuth = false

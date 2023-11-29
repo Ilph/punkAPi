@@ -7,7 +7,7 @@ import { P1 } from '../assets/styles/texts'
 
 import { Routes } from '../constants/routes'
 
-import type { modifyedBeer } from '../utils/modify-beers-response'
+import type { modifyedBeer } from '../models/beer-model'
 
 type Props = {
   beers: modifyedBeer[]

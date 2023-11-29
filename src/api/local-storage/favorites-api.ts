@@ -1,8 +1,13 @@
-import { localST } from '../utils/local-storage'
+import { localST } from '../../utils/local-storage'
 
 import { BaseApi } from './base-api'
 
-import type { FavoritesCard } from '../models/card-model'
+import type { FavoritesCard } from '../../models/card-model'
+
+export interface IFavoritesApi {
+  addFavoriteCardtoLocalStorage: (favoriteCard: FavoritesCard) => void
+  deleteFavoriteCardFromLocalStorage: (id: number) => void
+}
 
 class FavoritesApi extends BaseApi {
   static key = 'users'

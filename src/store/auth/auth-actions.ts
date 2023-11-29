@@ -1,4 +1,4 @@
-import { authApi } from '../../api/auth-api'
+import { serviceApi } from '../../api/service-api'
 
 import { signIn, signUp, logOut, getCurrentUser, getCurrentUserPending } from './auth-slices'
 
@@ -8,7 +8,7 @@ import type { AppDispatch } from '../store'
 
 export const registration = (data: SignUp) => (dispatch: AppDispatch) => {
   try {
-    authApi.signup(data)
+    serviceApi.signUp(data)
     dispatch(signUp('success'))
     dispatch(getUser())
   } catch {
@@ -18,7 +18,7 @@ export const registration = (data: SignUp) => (dispatch: AppDispatch) => {
 
 export const logIn = (data: SignIn) => (dispatch: AppDispatch) => {
   try {
-    authApi.signIn(data)
+    serviceApi.signIn(data)
     dispatch(signIn('success'))
     dispatch(getUser())
   } catch {
@@ -27,13 +27,13 @@ export const logIn = (data: SignIn) => (dispatch: AppDispatch) => {
 }
 
 export const exit = () => (dispatch: AppDispatch) => {
-  authApi.logOut()
+  serviceApi.logOut()
   dispatch(logOut())
 }
 
 export const getUser = () => (dispatch: AppDispatch) => {
   dispatch(getCurrentUserPending())
-  const currentUser = authApi.getCurrentUser()
+  const currentUser = serviceApi.getCurrentUser()
   if (currentUser) {
     const user = {
       email: currentUser.data.email

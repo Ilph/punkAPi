@@ -1,6 +1,6 @@
 import { FavoritesCard } from './card-model'
 
-type DataOfUser = {
+type UserOnServer = {
   email: string
   password: string
   repeatPassword: string
@@ -11,7 +11,7 @@ type DataOfUser = {
 
 export type LocalStorageUser = {
   id: string
-  data: DataOfUser
+  data: UserOnServer
 }
 
-export type LocalStorageKey = LocalStorageUser[]
+export type LocalStorageKeyUsers = LocalStorageUser[]
