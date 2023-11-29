@@ -77,6 +77,7 @@ export const authSlice = createSlice({
       state.user = null
       state.userStatus = 'pending'
       state.isAuth = false
+      state.signInStatus = 'pending'
       state.userError = null
     },
     getCurrentUser: (state, action: PayloadAction<User | null>) => {
@@ -84,10 +85,12 @@ export const authSlice = createSlice({
       if (action.payload === null) {
         state.userStatus = 'error'
         state.isAuth = false
+        state.signInStatus = 'error'
         state.userError = 'Текущий пользователь отсутствует'
       } else {
         state.userStatus = 'success'
         state.isAuth = true
+        state.signInStatus = 'success'
         state.userError = null
       }
     }

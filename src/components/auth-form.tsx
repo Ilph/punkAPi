@@ -11,9 +11,6 @@ import { Button } from '../ui/button/button'
 import { Link } from '../ui/link/link'
 import { P4 } from '../assets/styles/texts'
 
-import { useAppSelector } from '../hooks/store'
-import { authSelectors } from '../store/auth/auth-selectors'
-
 import { Routes } from '../constants/routes'
 
 import { authSchema } from '../utils/validation/auth-schema'
@@ -27,11 +24,11 @@ const defaultAuthFormValues = {
 
 type Props = {
   onSubmitForm: (data: SignIn) => void
+  signInError: string | null
 }
 
 export const AuthForm = (props: Props) => {
-  const signInError = useAppSelector(authSelectors.getSignInError)
-  const { onSubmitForm } = props
+  const { onSubmitForm, signInError } = props
 
   const {
     register,

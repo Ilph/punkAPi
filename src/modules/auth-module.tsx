@@ -35,7 +35,7 @@ export const AuthModule = () => {
   return (
     <FormWrapper>
       <H3 $weight='700'>Sign in</H3>
-      <AuthForm onSubmitForm={handleSubmit} />
+      <AuthForm onSubmitForm={handleSubmit} signInError={signInError} />
     </FormWrapper>
   )
 }

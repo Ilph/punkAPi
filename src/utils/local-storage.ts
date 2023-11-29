@@ -5,10 +5,14 @@ class LocalStorage {
   }
 
   public set = (key: string, value: Record<string, unknown>[]): void => {
-    if (typeof Storage !== 'undefined') {
-      localStorage.setItem(key, JSON.stringify(value))
-    } else {
-      throw new Error('Local storage is not supported in this browser.')
+    try {
+      if (typeof Storage !== 'undefined') {
+        localStorage.setItem(key, JSON.stringify(value))
+      } else {
+        throw new Error('Local storage is not supported in this browser.')
+      }
+    } catch (e) {
+      throw e
     }
   }
 }

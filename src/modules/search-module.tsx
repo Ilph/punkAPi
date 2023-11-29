@@ -44,5 +44,7 @@ export const SearchModule = () => {
     }
   }
 
-  return <SearchForm beers={beers} isLoading={isLoading} onSubmitForm={handleSubmit} />
+  return (
+    <SearchForm beers={beers} isLoading={isLoading} debounceValue={debouncedSearchValue} onSubmitForm={handleSubmit} />
+  )
 }

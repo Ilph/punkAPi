@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { Link } from '../ui/link/link'
-import { P1 } from '../assets/styles/texts'
+import { P1, P3 } from '../assets/styles/texts'
 
 import { Routes } from '../constants/routes'
 
@@ -12,21 +12,31 @@ import type { modifyedBeer } from '../models/beer-model'
 type Props = {
   beers: modifyedBeer[]
   searchValue: string
+  debounceValue: string
   isLoading: boolean
 }
 
-export const Suggest = ({ beers, searchValue, isLoading }: Props) => (
+export const Suggest = ({ beers, searchValue, debounceValue, isLoading }: Props) => (
   <>
-    {searchValue && (
+    {searchValue && debounceValue && (
       <SearchWrapper>
-        {isLoading && <p>Loading....</p>}
-        {beers.map((item) => (
-          <Link to={`${Routes.CARD}/${item.id}`} key={item.id}>
-            <SearchItem>
-              <P1>{item.name}</P1>
-            </SearchItem>
-          </Link>
-        ))}
+        {isLoading ? (
+          <Wrap>
+            <P3>Loading....</P3>
+          </Wrap>
+        ) : beers.length === 0 ? (
+          <Wrap>
+            <P3>Ничего не найдено</P3>
+          </Wrap>
+        ) : (
+          beers.map((item) => (
+            <Link to={`${Routes.CARD}/${item.id}`} key={item.id}>
+              <SearchItem>
+                <P1>{item.name}</P1>
+              </SearchItem>
+            </Link>
+          ))
+        )}
       </SearchWrapper>
     )}
   </>
@@ -45,4 +55,8 @@ const SearchWrapper = styled.ul`
 
 const SearchItem = styled.li`
   padding: 10px 0 5px 10px;
+`
+
+const Wrap = styled.div`
+  text-align: center;
 `

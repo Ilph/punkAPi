@@ -18,6 +18,25 @@
   <br>
 </div>
 
+## Запуск приложения
+
+Установка зависимостей
+
+```sh
+npm install
+```
+
+Локальный запуск проекта
+
+```sh
+npm run start
+```
+
+## Environment
+
+Шаблон переменных находится в файле .env.sample
+Создайте файл .env в корне проекта и скопируйте туда переменные.
+
 ### Languages
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
@@ -32,6 +51,8 @@
 
 ## **1 уровень (необходимый минимум)**
 
+1. [x] Для хранения учетных записей использован localStorge
+
 ## React
 
 1. [x] Пишем функциональные компоненты c хуками в приоритете над классовыми
@@ -42,7 +63,7 @@
 6. [x] Есть применение предохранителя: [ErrorBoundary](https://github.com/Ilph/aston.react/tree/main/src/route/route.tsx)
 7. [x] Есть хотя бы один кастомный хук: [Hoooks](https://github.com/Ilph/aston.react/tree/main/src/hooks)
 8. [x] Хотя бы несколько компонентов используют PropTypes: [Layout](https://github.com/Ilph/aston.react/tree/main/src/components/layout/base-layout-with-header-footer.tsx), [RequireAuth](https://github.com/Ilph/aston.react/tree/main/src/components/hoc/require-auth)
-9. [x] Поиск не должен триггерить много запросов к серверу
+9. [x] Поиск не должен триггерить много запросов к серверу: [Throttle](https://github.com/Ilph/aston.react/tree/main/src/utils/throttle.ts)
 10. [x] Есть применение lazy + Suspense: [lazy + Suspense](https://github.com/Ilph/aston.react/tree/main/src/route/route.tsx)
 
 
@@ -52,10 +73,16 @@
 2. [x] Используем слайсы: [Slices](https://github.com/Ilph/aston.react/tree/main/src/store/auth/auth-slices.ts)
 3. [x] Есть хотя бы одна кастомная мидлвара или createListenerMiddleware: [middleware](https://github.com/Ilph/aston.react/tree/main/src/store/middlewares)
 4. [x] Используется RTK Query: [RTK Query](https://github.com/Ilph/aston.react/tree/main/src/store/rtk-query)
-5. [x] Используется Transforming Responses[: RTK Query](https://github.com/Ilph/aston.react/tree/main/src/store/rtk-query/beers-api.ts)
+5. [x] Используется Transforming Responses: [RTK Query](https://github.com/Ilph/aston.react/tree/main/src/store/rtk-query/beers-api.ts)
 
 
 ## **2 уровень (необязательный)**
 
 1. [x] Использование TypeScript: [TypeScript](https://github.com/Ilph/aston.react/blob/main/tsconfig.json)
-2. [x] Настроен CI/CD: [CI/CD](https://github.com/Ilph/aston.react/tree/main/.github/workflows)
+2. [x] Подключен storybook: [Storybook](https://github.com/Ilph/aston.react/tree/main/src/stories)
+3. [x] Настроен CI/CD: [CI/CD](https://github.com/Ilph/aston.react/tree/main/.github/workflows)
+4. [x] Попробовал мемоизированный селектор, но профита не увидел: [CreateSelector] (https://github.com/Ilph/aston.react/tree/main/src/store/auth/auth-selectors)
+5. [x] Обернул карточки в memo. После клика на добавить в избранное ререндерились все карточки на странице. Теперь, ререндериться только карточка по которой кликают и обертка карточек.
+Остальные карточки не ререндерятся: [Memo] (https://github.com/Ilph/aston.react/tree/main/src/ui/card/main-card.tsx)
+
+

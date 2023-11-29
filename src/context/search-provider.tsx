@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useMemo, useReducer } from 'react'
 
 import { SearchContext, SearchDispatchContext } from './search-context'
 
@@ -9,8 +9,10 @@ import { InitialState } from './search-context'
 export const SearchProvider = ({ children }: { children: JSX.Element }) => {
   const [searchContext, dispatch] = useReducer(searchReducer, InitialState)
 
+  const searchContextMemo = useMemo(() => searchContext, [searchContext])
+
   return (
-    <SearchContext.Provider value={searchContext}>
+    <SearchContext.Provider value={searchContextMemo}>
       <SearchDispatchContext.Provider value={dispatch}>{children}</SearchDispatchContext.Provider>
     </SearchContext.Provider>
   )

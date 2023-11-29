@@ -18,6 +18,7 @@ type Props = {
   onSubmitForm: (data: Search) => void
   beers: modifyedBeer[]
   isLoading: boolean
+  debounceValue: string
 }
 
 const defaultSearchFormValues = {
@@ -26,7 +27,7 @@ const defaultSearchFormValues = {
 
 export const SearchForm = (props: Props) => {
   const dispatchContext = useSearchDispatch()
-  const { onSubmitForm, beers, isLoading } = props
+  const { onSubmitForm, beers, isLoading, debounceValue } = props
 
   const {
     register,
@@ -54,7 +55,7 @@ export const SearchForm = (props: Props) => {
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Input placeholder='Search beers ...' type='search' {...register('search')} errorOn={!!errors.search} />
-      <Suggest beers={beers} searchValue={searchValue} isLoading={isLoading} />
+      <Suggest beers={beers} searchValue={searchValue} debounceValue={debounceValue} isLoading={isLoading} />
 
       <Button type='submit' size={'middle'} disabled={!isDirty || isSubmitting}>
         Search

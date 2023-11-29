@@ -12,6 +12,7 @@ const CardPage = lazy(() => import('../pages/card-page'))
 const FavoritesPage = lazy(() => import('../pages/favorites-page'))
 const HistoryPage = lazy(() => import('../pages/history-page'))
 const SearchPage = lazy(() => import('../pages/search-page'))
+const NotFoundPage = lazy(() => import('../pages/not-found-page'))
 
 export const router = createBrowserRouter([
   {
@@ -49,5 +50,9 @@ export const router = createBrowserRouter([
   {
     path: Routes.SEARCH,
     element: <SearchPage />
+  },
+  {
+    path: Routes.NOT_FOUND,
+    element: <NotFoundPage />
   }
 ])

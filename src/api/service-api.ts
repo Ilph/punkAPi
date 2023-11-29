@@ -44,15 +44,15 @@ class ServiceApi {
   }
 
   public deleteStory(historyQuery: string) {
-    this.historyApi.addStory(historyQuery)
+    this.historyApi.deleteStory(historyQuery)
   }
 
   //Реализация методов избранные
-  public addFavoriteCardtoLocalStorage(favoriteCard: FavoritesCard) {
+  public addFavoriteCard(favoriteCard: FavoritesCard) {
     this.favoritesApi.addFavoriteCardtoLocalStorage(favoriteCard)
   }
 
-  public deleteFavoriteCardFromLocalStorage(id: number) {
+  public deleteFavoriteCard(id: number) {
     this.favoritesApi.deleteFavoriteCardFromLocalStorage(id)
   }
 }

@@ -18,12 +18,15 @@ export const historysSlices = createSlice({
     deleteHistoryQuery: (state, action: PayloadAction<string>) => {
       state.historys = state.historys.filter((item) => item !== action.payload)
     },
+    resetHistory: (state) => {
+      state.historys = []
+    },
     getHistorysOfCurrentUser: (state, action: PayloadAction<string[] | []>) => {
       state.historys = action.payload
     }
   }
 })
 
-export const { addHistoryQuery, deleteHistoryQuery, getHistorysOfCurrentUser } = historysSlices.actions
+export const { addHistoryQuery, deleteHistoryQuery, getHistorysOfCurrentUser, resetHistory } = historysSlices.actions
 
 export const historysReducer = historysSlices.reducer

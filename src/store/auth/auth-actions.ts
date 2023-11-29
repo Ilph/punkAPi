@@ -1,5 +1,10 @@
 import { serviceApi } from '../../api/service-api'
 
+import { resetFavorites } from '../favorites/favorites-slices'
+import { getFavorites } from '../favorites/favorite-actions'
+
+import { resetHistory } from '../historys/historys-slices'
+
 import { signIn, signUp, logOut, getCurrentUser, getCurrentUserPending } from './auth-slices'
 
 import type { SignUp } from '../../models/signup-model'
@@ -19,8 +24,9 @@ export const registration = (data: SignUp) => (dispatch: AppDispatch) => {
 export const logIn = (data: SignIn) => (dispatch: AppDispatch) => {
   try {
     serviceApi.signIn(data)
-    dispatch(signIn('success'))
     dispatch(getUser())
+    dispatch(getFavorites())
+    dispatch(signIn('success'))
   } catch {
     dispatch(signIn('error'))
   }
@@ -29,11 +35,14 @@ export const logIn = (data: SignIn) => (dispatch: AppDispatch) => {
 export const exit = () => (dispatch: AppDispatch) => {
   serviceApi.logOut()
   dispatch(logOut())
+  dispatch(resetFavorites())
+  dispatch(resetHistory())
 }
 
 export const getUser = () => (dispatch: AppDispatch) => {
   dispatch(getCurrentUserPending())
   const currentUser = serviceApi.getCurrentUser()
+
   if (currentUser) {
     const user = {
       email: currentUser.data.email
