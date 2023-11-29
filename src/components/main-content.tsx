@@ -24,8 +24,13 @@ export const MainContent = () => {
 
   const queryPage = Number(searchQuery.get('page'))
 
-  const { data: beers = [], isLoading, isSuccess, isError, error } = useGetBeersQuery({ page: queryPage })
-
+  const {
+    data: beers = [],
+    isLoading,
+    isSuccess,
+    isError,
+    error
+  } = useGetBeersQuery({ page: queryPage }, { skip: !queryPage })
   const favorites = useAppSelector(favoritesSelectors.getFavorites)
 
   const newData = beers.map((item) => {
