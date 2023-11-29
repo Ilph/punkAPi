@@ -1,18 +1,23 @@
-import { localST } from '../utils/local-storage'
+import { localST } from '../../utils/local-storage'
 
-import type { SignUp } from '../models/signup-model'
-import type { SignIn } from '../models/signin-model'
-import type { LocalStorageKey } from '../models/local-storage-model'
+import { BaseApi } from './base-api'
 
-class AuthApi {
+import type { SignUp } from '../../models/signup-model'
+import type { SignIn } from '../../models/signin-model'
+import type { LocalStorageUser } from '../../models/local-storage-model'
+
+export interface IAuthApi {
+  signIn: (body: SignIn) => void
+  signUp: (body: SignUp) => void
+  logOut: () => void
+  getCurrentUser: () => LocalStorageUser | null
+}
+
+class AuthApi extends BaseApi implements IAuthApi {
   static key = 'users'
 
-  public getUsers() {
-    return localST.get() as LocalStorageKey
-  }
-
   public signIn(body: SignIn) {
-    const users = this.getUsers()
+    const users = super.getUsers()
 
     if (!users) {
       return
@@ -26,8 +31,8 @@ class AuthApi {
     localST.set(AuthApi.key, users)
   }
 
-  public signup(body: SignUp) {
-    const users = this.getUsers()
+  public signUp(body: SignUp) {
+    const users = super.getUsers()
     const { email } = body
     if (users) {
       users.push({
@@ -47,33 +52,17 @@ class AuthApi {
   }
 
   public logOut() {
-    const users = this.getUsers()
-    const user = this.getCurrentUser()
+    const users = super.getUsers()
+    const user = super.getCurrentUser()
+    if (!users) {
+      return
+    }
     users.forEach((item) => {
       if (item.id === user?.id) {
         item.data.isAuth = false
       }
     })
-    if (user) {
-      localST.set(AuthApi.key, users)
-    }
-  }
-
-  public getCurrentUser() {
-    const users = this.getUsers()
-
-    if (!users) {
-      return
-    }
-
-    for (let user of users) {
-      const isAuth = user.data.isAuth
-      if (isAuth) {
-        return user
-      } else {
-        continue
-      }
-    }
+    localST.set(AuthApi.key, users)
   }
 }
 

@@ -1,17 +1,4 @@
-import type { Beer } from '../models/beer-model'
-
-export type modifyedBeer = {
-  id: number
-  name: string
-  imageUrl: string
-  description: string
-  firstBrewed: string
-  brewersTips: string
-  abv: number
-  ibu: number
-  srm: number
-  ph: number
-}
+import type { Beer, modifyedBeer } from '../models/beer-model'
 
 export const modifyBeersResponse = (response: Beer[]): modifyedBeer[] => {
   const result: modifyedBeer[] = []

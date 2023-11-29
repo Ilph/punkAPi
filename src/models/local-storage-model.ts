@@ -1,8 +1,17 @@
-import type { User } from './user-model'
+import { FavoritesCard } from './card-model'
+
+type UserOnServer = {
+  email: string
+  password: string
+  repeatPassword: string
+  isAuth: boolean
+  favorites: FavoritesCard[]
+  history: string[]
+}
 
 export type LocalStorageUser = {
   id: string
-  data: User
+  data: UserOnServer
 }
 
-export type LocalStorageKey = LocalStorageUser[]
+export type LocalStorageKeyUsers = LocalStorageUser[]

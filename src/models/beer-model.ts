@@ -22,6 +22,19 @@ export type Beer = {
   contributed_by: string
 }
 
+export type modifyedBeer = {
+  id: number
+  name: string
+  imageUrl: string
+  description: string
+  firstBrewed: string
+  brewersTips: string
+  abv: number
+  ibu: number
+  srm: number
+  ph: number
+}
+
 type ValueUnit = {
   value: number
   unit: string

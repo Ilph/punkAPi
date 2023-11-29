@@ -5,13 +5,13 @@ import { SearchModule } from '../modules/search-module'
 import { AboutCard } from '../components/about-card'
 
 import { useAppDispatch } from '../hooks/store'
-import { getFavouritesOfCurrentUser } from '../store/favorites/favorites-slices'
+import { getFavorites } from '../store/favorites/favorite-actions'
 
 const CardPage = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(getFavouritesOfCurrentUser())
+    dispatch(getFavorites())
   })
 
   return (

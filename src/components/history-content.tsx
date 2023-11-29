@@ -12,7 +12,7 @@ import { IconDelete } from '../assets/icons/icon-delete'
 
 import { useAppSelector, useAppDispatch } from '../hooks/store'
 import { historySelectors } from '../store/historys/historys-selectors'
-import { deleteHistoryQuery } from '../store/historys/historys-slices'
+import { deleteHistory } from '../store/historys/history-actions'
 
 import { BASE_API_CONFIG } from '../constants/base-api-config'
 import { Routes } from '../constants/routes'
@@ -31,7 +31,7 @@ export const HistoryContent = () => {
   }
 
   const handleDelete = (query: string) => () => {
-    dispatch(deleteHistoryQuery(query))
+    dispatch(deleteHistory(query))
   }
 
   return (

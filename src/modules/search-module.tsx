@@ -10,7 +10,7 @@ import { useSearch } from '../hooks/context'
 
 import { useAppSelector, useAppDispatch } from '../hooks/store'
 import { authSelectors } from '../store/auth/auth-selectors'
-import { addHistoryQuery } from '../store/historys/historys-slices'
+import { addHistory } from '../store/historys/history-actions'
 
 import { useDoSearchQuery } from '../store/rtk-query.ts/search-api'
 
@@ -40,9 +40,11 @@ export const SearchModule = () => {
     navigate(Routes.SEARCH)
     setSearchQuery({ beer_name: data.search })
     if (isAuth) {
-      dispatch(addHistoryQuery(data.search))
+      dispatch(addHistory(data.search))
     }
   }
 
-  return <SearchForm beers={beers} isLoading={isLoading} onSubmitForm={handleSubmit} />
+  return (
+    <SearchForm beers={beers} isLoading={isLoading} debounceValue={debouncedSearchValue} onSubmitForm={handleSubmit} />
+  )
 }

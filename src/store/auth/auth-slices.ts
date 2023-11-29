@@ -1,9 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { authApi } from '../../api/auth-api'
-
-import type { SignIn } from '../../models/signin-model'
-import type { SignUp } from '../../models/signup-model'
 import type { User } from '../../models/user-model'
 
 export type AuthSlice = {
@@ -44,11 +40,8 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    signIn: (state, action: PayloadAction<SignIn>) => {
-      authApi.signIn(action.payload)
-      const currentUser = authApi.getCurrentUser()
-      if (currentUser) {
-        state.user = currentUser.data
+    signIn: (state, action: PayloadAction<string>) => {
+      if (action.payload === 'success') {
         state.isAuth = true
         state.signInStatus = 'success'
         state.signInError = null
@@ -59,49 +52,51 @@ export const authSlice = createSlice({
         state.signInError = 'Пользователь не зарегистрирован'
       }
     },
-    signUp: (state, action: PayloadAction<SignUp>) => {
-      authApi.signup(action.payload)
-      const currentUser = authApi.getCurrentUser()
-      if (currentUser) {
-        state.user = currentUser.data
+    signUp: (state, action: PayloadAction<string>) => {
+      if (action.payload === 'error') {
+        state.signInStatus = 'error'
+        state.signUpStatus = 'error'
+        state.isAuth = false
+        state.signInError = null
+        state.signUpError = null
+      } else {
         state.signInStatus = 'success'
         state.signUpStatus = 'success'
         state.isAuth = true
         state.signInError = null
         state.signUpError = null
-      } else {
-        state.user = null
-        state.signInStatus = 'error'
-        state.signUpStatus = 'error'
-        state.isAuth = false
-        state.signInError = 'Ошибка регистрации'
-        state.signUpError = 'Ошибка регистрации'
       }
     },
     logOut: (state) => {
-      authApi.logOut()
       state.user = null
       state.isAuth = false
       state.logOutStatus = 'success'
       state.logOutError = null
     },
-    getCurrentUser: (state) => {
-      const currentUser = authApi.getCurrentUser()
-      if (currentUser) {
-        state.userStatus = 'success'
-        state.user = currentUser.data
-        state.isAuth = true
-        state.userError = null
-      } else {
+    getCurrentUserPending: (state) => {
+      state.user = null
+      state.userStatus = 'pending'
+      state.isAuth = false
+      state.signInStatus = 'pending'
+      state.userError = null
+    },
+    getCurrentUser: (state, action: PayloadAction<User | null>) => {
+      state.user = action.payload
+      if (action.payload === null) {
         state.userStatus = 'error'
-        state.user = null
         state.isAuth = false
+        state.signInStatus = 'error'
         state.userError = 'Текущий пользователь отсутствует'
+      } else {
+        state.userStatus = 'success'
+        state.isAuth = true
+        state.signInStatus = 'success'
+        state.userError = null
       }
     }
   }
 })
 
-export const { signIn, signUp, logOut, getCurrentUser } = authSlice.actions
+export const { signIn, signUp, logOut, getCurrentUser, getCurrentUserPending } = authSlice.actions
 
 export const authReducer = authSlice.reducer

@@ -1,14 +1,20 @@
-import { localST } from '../utils/local-storage'
+import { localST } from '../../utils/local-storage'
 
-import type { FavoritesCard } from '../models/card-model'
-import type { LocalStorageKey } from '../models/local-storage-model'
+import { BaseApi } from './base-api'
 
-class FavoritesApi {
+import type { FavoritesCard } from '../../models/card-model'
+
+export interface IFavoritesApi {
+  addFavoriteCardtoLocalStorage: (favoriteCard: FavoritesCard) => void
+  deleteFavoriteCardFromLocalStorage: (id: number) => void
+}
+
+class FavoritesApi extends BaseApi {
   static key = 'users'
 
   public addFavoriteCardtoLocalStorage(favoriteCard: FavoritesCard) {
-    const users = this.getUsers()
-    const currentUser = this.getCurrentUser()
+    const users = super.getUsers()
+    const currentUser = super.getCurrentUser()
 
     const item = currentUser?.data.favorites.find((item) => item.id === favoriteCard.id)
 
@@ -29,8 +35,8 @@ class FavoritesApi {
   }
 
   public deleteFavoriteCardFromLocalStorage(id: number) {
-    const users = this.getUsers()
-    const currentUser = this.getCurrentUser()
+    const users = super.getUsers()
+    const currentUser = super.getCurrentUser()
 
     if (!users) {
       return
@@ -43,27 +49,6 @@ class FavoritesApi {
       }
     })
     localST.set(FavoritesApi.key, users)
-  }
-
-  private getUsers() {
-    return localST.get() as LocalStorageKey
-  }
-
-  public getCurrentUser() {
-    const users = this.getUsers()
-
-    if (!users) {
-      return
-    }
-
-    for (let user of users) {
-      const isAuth = user.data.isAuth
-      if (isAuth) {
-        return user
-      } else {
-        continue
-      }
-    }
   }
 }
 

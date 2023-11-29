@@ -8,7 +8,7 @@ import { P3 } from '../assets/styles/texts'
 
 import { useDoSearchQuery } from '../store/rtk-query.ts/search-api'
 
-import { CardForMainPage } from '../ui/card/card-for-main-page'
+import { CardForMainPage } from '../ui/card/main-card'
 
 export const SearchContent = () => {
   const [searchQuery] = useSearchParams()

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import { useSearchParams } from 'react-router-dom'
 
-import { CardForMainPage } from '../ui/card/card-for-main-page'
+import { CardForMainPage } from '../ui/card/main-card'
 import { Loader } from '../ui/loader/loader'
 
 import { useScroll } from '../hooks/use-scroll'
@@ -24,8 +24,13 @@ export const MainContent = () => {
 
   const queryPage = Number(searchQuery.get('page'))
 
-  const { data: beers = [], isLoading, isSuccess, isError, error } = useGetBeersQuery({ page: queryPage })
-
+  const {
+    data: beers = [],
+    isLoading,
+    isSuccess,
+    isError,
+    error
+  } = useGetBeersQuery({ page: queryPage }, { skip: !queryPage })
   const favorites = useAppSelector(favoritesSelectors.getFavorites)
 
   const newData = beers.map((item) => {
