@@ -6,6 +6,7 @@ import { SearchModule } from '../modules/search-module'
 import { Spiner } from '../ui/loader/spiner'
 
 import { useAppDispatch, useAppSelector } from '../hooks/store'
+
 import { getFavorites } from '../store/favorites/favorite-actions'
 import { authSelectors } from '../store/auth/auth-selectors'
 
@@ -15,7 +16,7 @@ const MainPage = () => {
 
   useEffect(() => {
     dispatch(getFavorites())
-  })
+  }, [dispatch])
 
   if (userStatus === 'initial' || userStatus === 'pending') {
     return <Spiner />

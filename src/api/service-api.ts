@@ -22,7 +22,7 @@ class ServiceApi {
   }
 
   // Реализация методов авторизации и регистрации
-  public signIn(body: SignIn) {
+  public signIn(body: SignIn): void | null {
     this.authApi.signIn(body)
   }
 

@@ -12,7 +12,7 @@ const CardPage = () => {
 
   useEffect(() => {
     dispatch(getFavorites())
-  })
+  }, [dispatch])
 
   return (
     <BaseLayoutWithHeaderFooter>

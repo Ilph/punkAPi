@@ -11,7 +11,7 @@ const FavoritesPage = () => {
 
   useEffect(() => {
     dispatch(getFavorites())
-  })
+  }, [dispatch])
 
   return (
     <BaseLayoutWithHeaderFooter>

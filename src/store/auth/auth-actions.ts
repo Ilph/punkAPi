@@ -23,10 +23,12 @@ export const registration = (data: SignUp) => (dispatch: AppDispatch) => {
 
 export const logIn = (data: SignIn) => (dispatch: AppDispatch) => {
   try {
-    serviceApi.signIn(data)
-    dispatch(getUser())
-    dispatch(getFavorites())
-    dispatch(signIn('success'))
+    const result = serviceApi.signIn(data)
+    if (result) {
+      dispatch(signIn('success'))
+      dispatch(getUser())
+      dispatch(getFavorites())
+    }
   } catch {
     dispatch(signIn('error'))
   }

@@ -6,11 +6,12 @@ import { useSearchParams } from 'react-router-dom'
 import { SearchForm } from '../components/search-form'
 
 import { useDebounce } from '../hooks/use-debounce'
-import { useSearch } from '../hooks/context'
 
 import { useAppSelector, useAppDispatch } from '../hooks/store'
 import { authSelectors } from '../store/auth/auth-selectors'
 import { addHistory } from '../store/historys/history-actions'
+
+import { useSearch } from '../hooks/context'
 
 import { useDoSearchQuery } from '../store/rtk-query.ts/search-api'
 
@@ -21,11 +22,10 @@ import type { Search } from '../models/search-model'
 export const SearchModule = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setSearchQuery] = useSearchParams()
-
-  const isAuth = useAppSelector(authSelectors.getIsAuth)
   const dispatch = useAppDispatch()
-  const searchValue = useSearch()
   const navigate = useNavigate()
+  const isAuth = useAppSelector(authSelectors.getIsAuth)
+  const searchValue = useSearch()
 
   const debouncedSearchValue = useDebounce(searchValue.searchValue, 2000)
 

@@ -16,12 +16,17 @@ import { SearchProvider } from './context/search-provider'
 
 import { router } from './route/route'
 
+let didInit = false
+
 export function App() {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(getUser())
-  })
+    if (!didInit) {
+      didInit = true
+      dispatch(getUser())
+    }
+  }, [dispatch])
 
   return (
     <ThemeProvider theme={theme}>

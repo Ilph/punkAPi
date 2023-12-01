@@ -11,7 +11,7 @@ export const HistoryPage = () => {
 
   useEffect(() => {
     dispatch(getHistorys())
-  })
+  }, [dispatch])
 
   return (
     <BaseLayoutWithHeaderFooter>

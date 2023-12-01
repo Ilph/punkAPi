@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { SubmitHandler, useForm } from 'react-hook-form'
+
+import { useSearchParams } from 'react-router-dom'
 
 import styled from 'styled-components'
 
@@ -26,6 +28,8 @@ const defaultSearchFormValues = {
 }
 
 export const SearchForm = (props: Props) => {
+  const [searchQuery] = useSearchParams()
+  const [focus, setFocus] = useState(false)
   const dispatchContext = useSearchDispatch()
   const { onSubmitForm, beers, isLoading, debounceValue } = props
 
@@ -34,6 +38,7 @@ export const SearchForm = (props: Props) => {
     reset,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors, isSubmitting, isDirty }
   } = useForm<Search>({
     defaultValues: defaultSearchFormValues,
@@ -41,7 +46,14 @@ export const SearchForm = (props: Props) => {
     criteriaMode: 'all'
   })
 
-  const searchValue = watch('search', defaultSearchFormValues.search)
+  const query = searchQuery.get('beer_name')
+  useEffect(() => {
+    if (query) {
+      setValue('search', debounceValue)
+    }
+  }, [setValue, debounceValue, query])
+
+  let searchValue = watch('search', defaultSearchFormValues.search)
 
   useEffect(() => {
     dispatchContext({ type: 'addSearchValue', searchValue: searchValue })
@@ -52,10 +64,33 @@ export const SearchForm = (props: Props) => {
     reset()
   }
 
+  const handleFocus = () => {
+    setFocus(true)
+  }
+
+  const handleBlur = () => {
+    setTimeout(() => {
+      setFocus(false)
+    }, 100)
+  }
+
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Input placeholder='Search beers ...' type='search' {...register('search')} errorOn={!!errors.search} />
-      <Suggest beers={beers} searchValue={searchValue} debounceValue={debounceValue} isLoading={isLoading} />
+      <Input
+        placeholder='Search beers ...'
+        type='search'
+        {...register('search')}
+        errorOn={!!errors.search}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+      />
+      <Suggest
+        beers={beers}
+        searchValue={searchValue}
+        debounceValue={debounceValue}
+        isLoading={isLoading}
+        focus={focus}
+      />
 
       <Button type='submit' size={'middle'} disabled={!isDirty || isSubmitting}>
         Search
