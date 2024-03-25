@@ -11,13 +11,6 @@
   <a href='https://punkapi.com/'>https://punkapi.com/</a>
 </div>
 
-<div>
-  Deploy
-  <a href='https://ilph.github.io/aston.react/'>https://ilph.github.io/aston.react/</a>
-
-  <br>
-</div>
-
 ## Запуск приложения
 
 Установка зависимостей
